@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.miu.housing.dao.User
+import com.miu.housing.db.User
 import com.miu.housing.databinding.ActivityCreateAccountBinding
 
 class CreateAccountActivity : AppCompatActivity() {

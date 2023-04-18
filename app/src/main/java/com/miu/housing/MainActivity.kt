@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import com.miu.housing.dao.User
+import com.miu.housing.db.User
 import com.miu.housing.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
