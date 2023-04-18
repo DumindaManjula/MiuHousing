@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
                     userOb.add(newUser)
                 }
             }
-            else
-                Toast.makeText(this, "Failed to get Result.", Toast.LENGTH_LONG).show()
+//            else
+//                Toast.makeText(this, "Failed to get Result.", Toast.LENGTH_LONG).show()
         }
 
         binding.btnCreateNewAccount.setOnClickListener {
