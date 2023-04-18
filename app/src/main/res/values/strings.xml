@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">MiuHousing</string>
+    <string name="app_name">MIU Housing Booking</string>
+    <string name="home_tab">Home</string>
+    <string name="reservation_tab">Booking</string>
+    <string name="contact_tab">Contact Us</string>
+    <string name="faq_tab">FAQ</string>
 </resources>

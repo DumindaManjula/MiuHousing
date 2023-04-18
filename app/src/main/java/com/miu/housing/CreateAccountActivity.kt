@@ -18,7 +18,9 @@ class CreateAccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        if(supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
     }
 
     fun onCreateAccount(view: View){
