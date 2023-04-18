@@ -31,6 +31,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if(supportActionBar != null) {
+            supportActionBar!!.hide()
+        }
+
         var resultContracts = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result->
             if(result.resultCode == Activity.RESULT_OK) {
                 val newUser = result.data?.getSerializableExtra("newuser") as User
@@ -64,7 +68,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         if(isUserValid){
-            val intent = Intent(this@MainActivity, MenuActivity::class.java)
+            val intent = Intent(this@MainActivity, HousingActivity::class.java)
             intent.putExtra("user", confirmedUser)
             startActivity(intent)
         }else{

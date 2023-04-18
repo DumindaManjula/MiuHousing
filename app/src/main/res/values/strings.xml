@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">MiuHousing</string>
+    <string name="app_name">MIU Housing Booking</string>
+    <string name="home_tab">Home</string>
+    <string name="reservation_tab">Booking</string>
+    <string name="contact_tab">Contact Us</string>
+    <string name="faq_tab">FAQ</string>
+
+    <!--Home Introduction-->
+    <string name="home_housing">Housing</string>
+    <string name="home_housing_desc">One of the University’s primary missions is to provide a great residential experience for students while cultivating academic achievement and personal growth.</string>
+    <string name="home_security_desc">Campus Security</string>
+    <string name="home_security">In the event of an emergency, call Campus Security: ext. 1115, or 641-472-1115</string>
+    <string name="home_dining">Meal Times in the Annapurna Dining Hall</string>
+    <string name="home_dining_desc">Meals are served during the times posted below at the main University dining hall for all students, staff, and faculty.\nTo enter the dining hall, please show your meal card to the door checker.</string>
 </resources>
