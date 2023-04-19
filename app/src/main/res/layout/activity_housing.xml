@@ -10,12 +10,13 @@
         android:id="@+id/tlayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:tabMode="fixed"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-    </com.google.android.material.tabs.TabLayout>
+        app:tabMode="fixed"></com.google.android.material.tabs.TabLayout>
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vpager"
         app:layout_constraintTop_toBottomOf="@+id/tlayout"
