@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.miu.housing.dao.User
+import com.miu.housing.db.User
 import com.miu.housing.databinding.ActivityCreateAccountBinding
+import com.miu.housing.db.MiuHousingDatabase
+import kotlinx.coroutines.launch
 
-class CreateAccountActivity : AppCompatActivity() {
+class CreateAccountActivity : BaseActivity() {
 
     private lateinit var binding: ActivityCreateAccountBinding
 
@@ -31,7 +33,15 @@ class CreateAccountActivity : AppCompatActivity() {
         var pwd = binding.password.text
 
         if (fn.isNotBlank() && ln.isNotBlank() && mail.isNotBlank() && pwd.isNotBlank()) {
-            val user = User(fn.toString(), ln.toString(), mail.toString(), pwd.toString())
+            val user = User(fn.toString(), ln.toString(), mail.toString(), pwd.toString(), "A")
+
+            launch {
+                applicationContext?.let {
+                    MiuHousingDatabase(it).getUserDao().addUser(user)
+                    it.toast("")
+                }
+            }
+
 
             val data = Intent()
             data.putExtra("newuser", user)

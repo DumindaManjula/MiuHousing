@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import com.miu.housing.dao.User
+import com.miu.housing.db.User
 import com.miu.housing.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,10 +23,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         userOb = ArrayList<User>()
-        userOb.add(User("John","Wick","john@gmail.com","123"))
-        userOb.add(User("Andrew","Smith","andrew@gmail.com","345"))
-        userOb.add(User("Ryan","James","Ryan@gmail.com","567"))
-        userOb.add(User("Mark","Boucher","mark@gmail.com","789"))
+        userOb.add(User("John","Wick","john@gmail.com","123", "A"))
+        userOb.add(User("Andrew","Smith","andrew@gmail.com","345", "A"))
+        userOb.add(User("Ryan","James","Ryan@gmail.com","567", "A"))
+        userOb.add(User("Mark","Boucher","mark@gmail.com","789", "A"))
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
                     userOb.add(newUser)
                 }
             }
-            else
-                Toast.makeText(this, "Failed to get Result.", Toast.LENGTH_LONG).show()
+//            else
+//                Toast.makeText(this, "Failed to get Result.", Toast.LENGTH_LONG).show()
         }
 
         binding.btnCreateNewAccount.setOnClickListener {
