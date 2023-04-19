@@ -13,5 +13,5 @@ interface UserDao {
     suspend fun getAllUsers():List<User>
 
     @Query("select * from user where emailId= :emailId and password= :password ")
-    fun getUserById(emailId: String, password: String) : User
+    suspend fun getUserById(emailId: String, password: String) : User
 }

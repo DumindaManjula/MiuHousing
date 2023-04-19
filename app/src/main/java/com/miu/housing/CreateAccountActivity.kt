@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.miu.housing.db.User
 import com.miu.housing.databinding.ActivityCreateAccountBinding
 import com.miu.housing.db.MiuHousingDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class CreateAccountActivity : BaseActivity() {
@@ -38,13 +41,10 @@ class CreateAccountActivity : BaseActivity() {
             launch {
                 applicationContext?.let {
                     MiuHousingDatabase(it).getUserDao().addUser(user)
-                    it.toast("")
+                    it.toast("User Saved")
                 }
             }
-
-
             val data = Intent()
-            data.putExtra("newuser", user)
             setResult(Activity.RESULT_OK, data)
             finish()
         }else{
