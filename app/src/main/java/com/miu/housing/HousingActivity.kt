@@ -14,8 +14,8 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.view.menu.MenuBuilder
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.miu.housing.dao.User
 import com.miu.housing.databinding.ActivityHousingBinding
+import com.miu.housing.db.User
 import org.w3c.dom.Text
 
 class HousingActivity : AppCompatActivity() {
