@@ -10,10 +10,11 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.miu.housing.db.User
 import com.miu.housing.databinding.ActivityMainBinding
+import com.miu.housing.db.MiuHousingDatabase
+import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    private lateinit var userOb: ArrayList<User>
     private lateinit var binding: ActivityMainBinding
 
     val MY_MIU_TAG = "MiuHousingApp"
@@ -22,11 +23,11 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
-        userOb = ArrayList<User>()
-        userOb.add(User("John","Wick","john@gmail.com","123", "A"))
-        userOb.add(User("Andrew","Smith","andrew@gmail.com","345", "A"))
-        userOb.add(User("Ryan","James","Ryan@gmail.com","567", "A"))
-        userOb.add(User("Mark","Boucher","mark@gmail.com","789", "A"))
+//        userOb = ArrayList<User>()
+//        userOb.add(User("John","Wick","john@gmail.com","123", "A"))
+//        userOb.add(User("Andrew","Smith","andrew@gmail.com","345", "A"))
+//        userOb.add(User("Ryan","James","Ryan@gmail.com","567", "A"))
+//        userOb.add(User("Mark","Boucher","mark@gmail.com","789", "A"))
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -37,13 +38,10 @@ class MainActivity : AppCompatActivity() {
 
         var resultContracts = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result->
             if(result.resultCode == Activity.RESULT_OK) {
-                val newUser = result.data?.getSerializableExtra("newuser") as User
-                if (newUser != null) {
-                    userOb.add(newUser)
-                }
+                Toast.makeText(this, "User saved successfully.", Toast.LENGTH_LONG).show()
             }
-//            else
-//                Toast.makeText(this, "Failed to get Result.", Toast.LENGTH_LONG).show()
+            else
+                Toast.makeText(this, "Failed to save user.", Toast.LENGTH_LONG).show()
         }
 
         binding.btnCreateNewAccount.setOnClickListener {
@@ -56,25 +54,38 @@ class MainActivity : AppCompatActivity() {
 
         var email = binding.etEmailAddress.text.trim().toString();
         var password = binding.etPassword.text.trim().toString();
-        var isUserValid = false;
+
         var confirmedUser: User? = null
 
-        for(user in userOb){
-            if(email == user.emailId && password == user.password){
-                Log.i(MY_MIU_TAG, "Confirmed User")
-                confirmedUser = user;
-                isUserValid = true
-                break;
-            }
-        }
+        launch {
+            applicationContext?.let {
+
+                var isUserValid = false;
+                var allUsers:List<User> = MiuHousingDatabase(it).getUserDao().getAllUsers()
+                for(user in allUsers){
+                    Log.i(MY_MIU_TAG, "email :" + email +" "+ user.emailId)
+                    Log.i(MY_MIU_TAG, "password :" + password +" "+ user.password)
+                    if(email == user.emailId && password == user.password){
+                        Log.i(MY_MIU_TAG, "Confirmed User")
+                        confirmedUser = user;
+                        isUserValid = true
+                        break;
+                    }
+                    Log.i(MY_MIU_TAG, "test" + user.toString())
+                }
+
+                //        Log.i(MY_MIU_TAG, "isUserValid" + isUserValid)
         if(isUserValid){
             val intent = Intent(this@MainActivity, HousingActivity::class.java)
             intent.putExtra("user", confirmedUser)
             startActivity(intent)
         }else{
             Log.i(MY_MIU_TAG, "Invalid User")
-            Toast.makeText(this, "Incorrect username or password.", Toast.LENGTH_LONG).show()
+            it.toast("Incorrect username or password.")
         }
+            }
+        }
+
 
     }
 
