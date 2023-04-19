@@ -31,7 +31,7 @@ class CreateAccountActivity : AppCompatActivity() {
         var pwd = binding.password.text
 
         if (fn.isNotBlank() && ln.isNotBlank() && mail.isNotBlank() && pwd.isNotBlank()) {
-            val user = User(fn.toString(), ln.toString(), mail.toString(), pwd.toString())
+            val user = User(fn.toString(), ln.toString(), mail.toString(), pwd.toString(), "A")
 
             val data = Intent()
             data.putExtra("newuser", user)
