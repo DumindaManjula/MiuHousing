@@ -14,6 +14,7 @@
         android:backgroundTint="@color/purple_500"
         app:tabTextColor="@color/white"
         app:tabIconTint="@color/white"
+        app:tabIndicatorColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

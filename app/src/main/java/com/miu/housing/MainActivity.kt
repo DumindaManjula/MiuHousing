@@ -75,14 +75,14 @@ class MainActivity : BaseActivity() {
                 }
 
                 //        Log.i(MY_MIU_TAG, "isUserValid" + isUserValid)
-        if(isUserValid){
-            val intent = Intent(this@MainActivity, HousingActivity::class.java)
-            intent.putExtra("user", confirmedUser)
-            startActivity(intent)
-        }else{
-            Log.i(MY_MIU_TAG, "Invalid User")
-            it.toast("Incorrect username or password.")
-        }
+                if(isUserValid){
+                    val intent = Intent(this@MainActivity, HousingActivity::class.java)
+                    intent.putExtra("user", confirmedUser)
+                    startActivity(intent)
+                }else{
+                    Log.i(MY_MIU_TAG, "Invalid User")
+                    it.toast("Incorrect username or password.")
+                }
             }
         }
 
