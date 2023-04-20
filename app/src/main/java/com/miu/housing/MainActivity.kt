@@ -57,6 +57,18 @@ class MainActivity : BaseActivity() {
 
         var confirmedUser: User? = null
 
+        if(email.isEmpty()){
+            binding.etEmailAddress.error = "Email Required"
+            binding.etEmailAddress.requestFocus()
+            return
+        }
+
+        if(password.isEmpty()){
+            binding.etPassword.error = "Password Required"
+            binding.etPassword.requestFocus()
+            return
+        }
+
         launch {
             applicationContext?.let {
 
@@ -85,8 +97,5 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
-
-
     }
-
 }
