@@ -43,6 +43,8 @@ class HousingActivity : AppCompatActivity() {
         var tview = viewActionBar.findViewById<TextView>(R.id.loginname)
         tview.setText("Welcome $fullname")
         var appName = getString(R.string.app_name)
+        var aview = viewActionBar.findViewById<TextView>(R.id.apptitle)
+        aview.setText(appName)
 
         var housingAdapter = HousingAdapter(this)
         binding.vpager.adapter = housingAdapter
