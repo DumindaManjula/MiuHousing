@@ -1,14 +1,294 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home" />
-
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+        >
+            <ImageView
+                android:id="@+id/ivHBanner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/miu_life"
+                android:layout_marginTop="-60dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:id="@+id/tvHTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/home_housing"
+                android:textAppearance="?attr/textAppearanceHeadline4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivHBanner"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvHDesc"
+                android:text="@string/home_housing_desc"
+                android:layout_marginBottom="20dp"
+                android:textAppearance="?attr/textAppearanceBody2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHTitle"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvHOncampus"
+                android:text="@string/home_housing_oncampus"
+                android:textAppearance="?textAppearanceHeadline5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHDesc"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvHOncampusDesc"
+                android:text="@string/home_housing_oncampus_desc"
+                android:textAppearance="?textAppearanceBody2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHOncampus"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvHSecurity"
+                android:text="@string/home_security"
+                android:paddingTop="20dp"
+                android:textAppearance="?textAppearanceHeadline5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHOncampusDesc"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvHSecurityDesc"
+                android:text="@string/home_security_desc"
+                android:textAppearance="?textAppearanceBody2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHSecurity"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvHDining"
+                android:text="@string/home_dining"
+                android:paddingTop="20dp"
+                android:textAppearance="?textAppearanceHeadline5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHSecurityDesc"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvHDiningDesc"
+                android:text="@string/home_dining_desc"
+                android:textAppearance="?textAppearanceBody2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHDining"
+                app:layout_constraintEnd_toEndOf="parent"/>
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tbDining"
+                android:backgroundTint="@color/purple_500"
+                android:paddingTop="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHDiningDesc"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal"
+                android:stretchColumns="*">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" >
+                    <View style="@style/VDivider" />
+                </LinearLayout>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/purple_200">
+                    <TextView
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:text="@string/home_tb_row11"
+                        android:textAppearance="?textAppearanceHeadline6"
+                        android:layout_gravity="left" />
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent" >
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+                    <TextView
+                        android:text="@string/home_tb_row12"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:layout_gravity="left"/>
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent" >
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+                    <TextView
+                        android:text="@string/home_tb_row13"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:layout_gravity="left"/>
+                </TableRow>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" >
+                    <View style="@style/VDivider" />
+                </LinearLayout>
+                <TableRow>
+                    <TextView
+                        android:text="@string/home_tb_row21"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:textAppearance="?textAppearanceHeadline6"
+                        android:layout_gravity="left" />
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent" >
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+                    <TextView
+                        android:text="@string/home_tb_row22"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:layout_gravity="left"/>
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent" >
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+                    <TextView
+                        android:text="@string/home_tb_row23"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:layout_gravity="left" />
+                </TableRow>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" >
+                    <View style="@style/VDivider" />
+                </LinearLayout>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/purple_200">
+                    <TextView
+                        android:text="@string/home_tb_row31"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:textAppearance="?textAppearanceHeadline6"
+                        android:layout_gravity="left"/>
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent" >
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+                    <TextView
+                        android:text="@string/home_tb_row32"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:layout_gravity="left"/>
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent" >
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+                    <TextView
+                        android:text="@string/home_tb_row33"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:layout_gravity="left"/>
+                </TableRow>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" >
+                    <View style="@style/VDivider" />
+                </LinearLayout>
+                <TableRow>
+                    <TextView
+                        android:text="@string/home_tb_row41"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:textAppearance="?textAppearanceHeadline6"
+                        android:layout_gravity="left"/>
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent" >
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+                    <TextView
+                        android:text="@string/home_tb_row42"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:layout_gravity="left"/>
+                    <LinearLayout
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent" >
+                        <View style="@style/Divider" />
+                    </LinearLayout>
+                    <TextView
+                        android:text="@string/home_tb_row43"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:layout_gravity="left"/>
+                </TableRow>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp" >
+                    <View style="@style/VDivider" />
+                </LinearLayout>
+            </TableLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvHDiningAf"
+                android:text="@string/home_dining_after"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:textAppearance="?textAppearanceBody2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tbDining"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </FrameLayout>
