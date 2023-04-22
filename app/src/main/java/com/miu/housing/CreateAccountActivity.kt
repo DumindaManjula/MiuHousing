@@ -23,69 +23,71 @@ class CreateAccountActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if(supportActionBar != null) {
+        if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
     }
 
-    fun onCreateAccount(view: View){
+    fun onCreateAccount(view: View) {
 
         var fn = binding.firstName.text
         var ln = binding.lastName.text
         var mail = binding.email.text
         var pwd = binding.password.text
 
-        if(fn.isEmpty()){
+        if (fn.isEmpty()) {
             binding.firstName.error = "Firstname Required"
             binding.firstName.requestFocus()
             return
         }
 
-        if(ln.isEmpty()){
+        if (ln.isEmpty()) {
             binding.lastName.error = "Lastname Required"
             binding.lastName.requestFocus()
             return
         }
 
-        if(mail.isEmpty()){
+        if (mail.isEmpty()) {
             binding.email.error = "Email Required"
             binding.email.requestFocus()
             return
         }
 
-        if(pwd.isEmpty()){
+        if (pwd.isEmpty()) {
             binding.password.error = "Password Required"
             binding.password.requestFocus()
             return
         }
 
-        if(!isValidEmail(mail.toString())){
+        if (!isValidEmail(mail.toString())) {
             binding.email.error = "Enter valid Email"
             binding.email.requestFocus()
             return
         }
 
-        if (fn.isNotBlank() && ln.isNotBlank() && mail.isNotBlank() && pwd.isNotBlank()) {
-            val user = User(fn.toString(), ln.toString(), mail.toString(), pwd.toString(), "A")
+        val user = User(fn.toString(), ln.toString(), mail.toString(), pwd.toString(), "A")
 
-            launch {
-                applicationContext?.let {
-                    var userEmail:User? = MiuHousingDatabase(it).getUserDao().getUserByEmailId(mail.toString())
-                    if(userEmail != null){
-                        it.toast("Already have an account with this email address")
-                    }else{
-                        MiuHousingDatabase(it).getUserDao().addUser(user)
-                        it.toast("User Saved")
+        launch {
+            applicationContext?.let {
+                var userEmail: User? =
+                    MiuHousingDatabase(it).getUserDao().getUserByEmailId(mail.toString())
+                if (userEmail != null) {
+                    it.toast("Already have an account with this email address")
+                } else {
+                    var user = MiuHousingDatabase(it).getUserDao().addUser(user)
+                    if(user != null){
+                        it.toast("User Created")
                         val data = Intent()
                         setResult(Activity.RESULT_OK, data)
                         finish()
+                    }else{
+                        it.toast("Failing to save user data")
                     }
                 }
             }
-
-        }else{
-            Toast.makeText(this, "Please enter all field data.", Toast.LENGTH_LONG).show()
         }
+
+
     }
 
     override fun onBackPressed() {
