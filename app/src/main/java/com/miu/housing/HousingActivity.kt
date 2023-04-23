@@ -46,7 +46,7 @@ class HousingActivity : AppCompatActivity() {
         var aview = viewActionBar.findViewById<TextView>(R.id.apptitle)
         aview.setText(appName)
 
-        var housingAdapter = HousingAdapter(this)
+        var housingAdapter = HousingAdapter(this, user)
         binding.vpager.adapter = housingAdapter
         binding.tlayout.tabGravity = TabLayout.GRAVITY_FILL
 

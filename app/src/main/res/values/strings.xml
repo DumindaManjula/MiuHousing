@@ -45,4 +45,7 @@
     <!--Contact us-->
 
     <!--FAQ-->
+    <string name="damage_item_hint"><font size="10">Enter the damaged item</font></string>
+
+
 </resources>

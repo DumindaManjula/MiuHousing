@@ -24,12 +24,6 @@ class MainActivity : BaseActivity() {
 
         super.onCreate(savedInstanceState)
 
-//        userOb = ArrayList<User>()
-//        userOb.add(User("John","Wick","john@gmail.com","123", "A"))
-//        userOb.add(User("Andrew","Smith","andrew@gmail.com","345", "A"))
-//        userOb.add(User("Ryan","James","Ryan@gmail.com","567", "A"))
-//        userOb.add(User("Mark","Boucher","mark@gmail.com","789", "A"))
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -49,7 +43,7 @@ class MainActivity : BaseActivity() {
             var intent = Intent(this,CreateAccountActivity::class.java)
             resultContracts.launch(intent)
         }
-
+        
         binding.tvForgotPassword.setOnClickListener{
             if(binding.etEmailAddress.text.toString().isNotEmpty()) {
                 var email = binding.etEmailAddress.text.toString()
@@ -74,6 +68,7 @@ class MainActivity : BaseActivity() {
             }
         }
     }
+    
     private fun composeEmail(address: String, subject: String, content: String) {
         val intent = Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse("mailto:")
@@ -86,7 +81,7 @@ class MainActivity : BaseActivity() {
             startActivity(intent)
         }
     }
-
+    
     fun onSignIn(view: View) {
         if(checkSignInForm()) {
             var email = binding.etEmailAddress.text.trim().toString()
@@ -114,6 +109,7 @@ class MainActivity : BaseActivity() {
             }
         }
     }
+
     private fun checkSignInForm(): Boolean {
         var flag: Boolean = true
         if(binding.etEmailAddress.text.isEmpty()) {
