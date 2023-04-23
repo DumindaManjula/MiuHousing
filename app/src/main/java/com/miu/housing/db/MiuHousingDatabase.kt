@@ -3,15 +3,18 @@ package com.miu.housing.db
 import android.content.Context
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.miu.housing.dao.BookingDao
 import com.miu.housing.dao.BuildingDao
 import com.miu.housing.dao.RoomDao
 import com.miu.housing.dao.UserDao
+import com.miu.housing.data.Converter
 
 @Database(
     entities = [User::class, Building::class, Room::class, Booking::class],
     version = 1
 )
+@TypeConverters(Converter::class)
 abstract class MiuHousingDatabase: RoomDatabase() {
 
     abstract fun getUserDao(): UserDao
