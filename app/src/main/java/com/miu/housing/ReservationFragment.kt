@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.miu.housing.databinding.FragmentReservationBinding
+import com.miu.housing.db.User
 
-class ReservationFragment : Fragment() {
+class ReservationFragment(user:User) : Fragment() {
     private lateinit var binding: FragmentReservationBinding
+    var userInfo = user
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -21,7 +23,7 @@ class ReservationFragment : Fragment() {
 
             Toast.makeText(context, "to Report a Damage", Toast.LENGTH_SHORT).show()
             val intent = Intent(context, ReportDamageActivity::class.java)
-            intent.putExtra("message","user info") // Here message is a key to retrieve the input text in the second activity
+            intent.putExtra("userInfo",userInfo) // Here message is a key to retrieve the input text in the second activity
             startActivity(intent)
         }
         return binding.root
