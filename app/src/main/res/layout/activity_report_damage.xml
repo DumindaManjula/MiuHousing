@@ -77,7 +77,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/actv" />
 
             <EditText
-                android:id="@+id/editTextTextMultiLine2"
+                android:id="@+id/editTextReason"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -100,7 +100,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2" />
 
             <EditText
-                android:id="@+id/editTextTextMultiLine3"
+                android:id="@+id/editTextCondition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

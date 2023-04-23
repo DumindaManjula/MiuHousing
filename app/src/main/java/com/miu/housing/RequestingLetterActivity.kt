@@ -2,12 +2,11 @@ package com.miu.housing
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
 import android.view.View
 import android.widget.Toast
-import com.miu.housing.databinding.ActivityReportDamageBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.miu.housing.databinding.ActivityRequestingLetterBinding
 import com.miu.housing.db.User
 
@@ -50,8 +49,24 @@ class RequestingLetterActivity : AppCompatActivity() {
                 +"<p>${user?.firstName} ${user?.lastName}</p>"))
         intent.selector = emailIntent
 
-        this.startActivity(Intent.createChooser(intent, "Choose an email client") )
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(Intent.createChooser(intent, "Choose an email client"), 0 )
+        }
+
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 0) {
+
+            val intent = Intent(this, HousingActivity::class.java)
+            Toast.makeText(this,"Email sent successfully.MIU Housing will contact you soon", Toast.LENGTH_LONG).show()
+
+            intent.putExtra("user", user)
+            startActivity(intent)
+        }
+    }
+
     fun cancelRequest(view: View){
 
         val intent = Intent(this, HousingActivity::class.java)

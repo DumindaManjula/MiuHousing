@@ -27,13 +27,13 @@ class ReservationFragment(user:User) : Fragment() {
             startActivity(intent)
         }
 
-//        binding.imageButton3.setOnClickListener {
-//
-//            Toast.makeText(context, "to Request a Letter", Toast.LENGTH_SHORT).show()
-//            val intent = Intent(context, RequestingLetterActivity::class.java)
-//            intent.putExtra("userInfo",userInfo)
-//            startActivity(intent)
-//        }
+        binding.imageButton3.setOnClickListener {
+
+            Toast.makeText(context, "to Request a Letter", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, RequestingLetterActivity::class.java)
+            intent.putExtra("userInfo",userInfo)
+            startActivity(intent)
+        }
 
         return binding.root
     }
