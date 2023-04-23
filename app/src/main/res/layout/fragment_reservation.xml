@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".ReservationFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Reservation" />
+        android:layout_height="wrap_content"
+
+        android:id="@+id/glayout">
+
+    </GridLayout>
 
 </FrameLayout>

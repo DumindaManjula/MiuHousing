@@ -2,6 +2,7 @@ package com.miu.housing
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -48,45 +49,88 @@ class MainActivity : BaseActivity() {
             var intent = Intent(this,CreateAccountActivity::class.java)
             resultContracts.launch(intent)
         }
+
+        binding.tvForgotPassword.setOnClickListener{
+            if(binding.etEmailAddress.text.toString().isNotEmpty()) {
+                var email = binding.etEmailAddress.text.toString()
+                if(!isVaidEmail(email)) {
+                    binding.etEmailAddress.error = "Email is invalid!"
+                } else {
+                    launch {
+                        applicationContext?.let {
+                            var user: User? = MiuHousingDatabase(it).getUserDao().getUserByEmailId(email)
+                            user?.let {
+                                var eBody = "Your password is: ${it.password}"
+                                composeEmail(email, "Forgot password for email $email from MIU Housing", eBody)
+                            }
+                            if(user == null) {
+                                toast("Can not find user with email ${email}")
+                            }
+                        }
+                    }
+                }
+            } else {
+                toast("Email address must not be empty.")
+            }
+        }
+    }
+    private fun composeEmail(address: String, subject: String, content: String) {
+        val intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:")
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(address))
+            putExtra(Intent.EXTRA_SUBJECT, subject)
+            putExtra(Intent.EXTRA_TEXT, content)
+            intent.type = "text/plain"
+        }
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        }
     }
 
-    fun onSignIn(view: View){
-
-        var email = binding.etEmailAddress.text.trim().toString();
-        var password = binding.etPassword.text.trim().toString();
-
-        var confirmedUser: User? = null
-
-        launch {
-            applicationContext?.let {
-
-                var isUserValid = false;
-                var allUsers:List<User> = MiuHousingDatabase(it).getUserDao().getAllUsers()
-                for(user in allUsers){
-                    Log.i(MY_MIU_TAG, "email :" + email +" "+ user.emailId)
-                    Log.i(MY_MIU_TAG, "password :" + password +" "+ user.password)
-                    if(email == user.emailId && password == user.password){
-                        Log.i(MY_MIU_TAG, "Confirmed User")
-                        confirmedUser = user;
-                        isUserValid = true
-                        break;
+    fun onSignIn(view: View) {
+        if(checkSignInForm()) {
+            var email = binding.etEmailAddress.text.trim().toString()
+            var password = binding.etPassword.text.trim().toString()
+            if(checkSignInForm()) {
+                launch {
+                    applicationContext?.let {
+                        var loginUser: User? = MiuHousingDatabase(it).getUserDao().getUserByEmailId(email)
+                        loginUser?.let {
+                            if (password == loginUser?.password) {
+                                Log.i(MY_MIU_TAG, "Confirmed User")
+                                Log.i(MY_MIU_TAG, "test" + loginUser.toString())
+                                val intent = Intent(this@MainActivity, HousingActivity::class.java)
+                                intent.putExtra("user", loginUser)
+                                startActivity(intent)
+                            } else {
+                                binding.etPassword.error = "Password is not correct!"
+                            }
+                        }
+                        if(loginUser == null){
+                            toast("Can not find user with email ${email}")
+                        }
                     }
-                    Log.i(MY_MIU_TAG, "test" + user.toString())
-                }
-
-                //        Log.i(MY_MIU_TAG, "isUserValid" + isUserValid)
-                if(isUserValid){
-                    val intent = Intent(this@MainActivity, HousingActivity::class.java)
-                    intent.putExtra("user", confirmedUser)
-                    startActivity(intent)
-                }else{
-                    Log.i(MY_MIU_TAG, "Invalid User")
-                    it.toast("Incorrect username or password.")
                 }
             }
         }
-
-
     }
-
+    private fun checkSignInForm(): Boolean {
+        var flag: Boolean = true
+        if(binding.etEmailAddress.text.isEmpty()) {
+            binding.etEmailAddress.error = "Email is required!"
+            flag = false
+        } else if(!isVaidEmail(binding.etEmailAddress.text.toString())) {
+            binding.etEmailAddress.error = "Email is invalid!"
+            flag = true
+        }
+        if(binding.etPassword.text.isEmpty()) {
+            binding.etPassword.error = "Password is required!"
+            flag = false
+        }
+        return flag
+    }
+    private fun isVaidEmail(email: String): Boolean {
+        val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$"
+        return email.matches(emailRegex.toRegex())
+    }
 }
