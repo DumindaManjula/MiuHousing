@@ -31,7 +31,6 @@ class ReportDamageActivity : AppCompatActivity() {
         val adapter = ArrayAdapter<String>(this, R.layout.simple_spinner_item, test)
         binding.actv.setAdapter(adapter)
         binding.actv.threshold = 1
-        Toast.makeText(this,"This is my message", Toast.LENGTH_LONG).show()
 
         binding.actv.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
@@ -67,8 +66,6 @@ class ReportDamageActivity : AppCompatActivity() {
         Toast.makeText(this,"Notified damaged Item $selectedItem. MiuHousing will contact you soon ", Toast.LENGTH_LONG).show()
 
         val intent = Intent(this, HousingActivity::class.java)
-        Toast.makeText(this,user.toString(), Toast.LENGTH_LONG).show()
-
         intent.putExtra("user", user)
         startActivity(intent)
 
@@ -76,8 +73,6 @@ class ReportDamageActivity : AppCompatActivity() {
     fun cancelDamage(view: View){
 
         val intent = Intent(this, HousingActivity::class.java)
-        Toast.makeText(this,user.toString(), Toast.LENGTH_LONG).show()
-
         intent.putExtra("user", user)
         startActivity(intent)
     }

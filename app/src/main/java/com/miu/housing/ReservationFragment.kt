@@ -21,7 +21,6 @@ class ReservationFragment(user:User) : Fragment() {
         binding = FragmentReservationBinding.bind(view)
         binding.imageButton2.setOnClickListener {
 
-            Toast.makeText(context, "to Report a Damage", Toast.LENGTH_SHORT).show()
             val intent = Intent(context, ReportDamageActivity::class.java)
             intent.putExtra("userInfo",userInfo) // Here message is a key to retrieve the input text in the second activity
             startActivity(intent)
