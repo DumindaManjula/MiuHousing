@@ -35,6 +35,12 @@
     <string name="home_dining_after">All diners are requested to leave the dining hall 30 minutes after the closing times listed above.</string>
 
     <!--Reservation-->
+    <string name="reserve_room_title">Reserve room</string>
+    <string name="return_room_title">Return room</string>
+    <string name="request_letter_title">Requesting letter</string>
+    <string name="report_damage_title">Report damage</string>
+    <string name="complain_title">Make complain</string>
+    <string name="emergency_title">Make emergency</string>
 
     <!--Contact us-->
 
