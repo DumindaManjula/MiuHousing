@@ -16,11 +16,17 @@ class ReportDamageActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityReportDamageBinding
     var selectedItem: String? = null;
+    var user:User? = null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityReportDamageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         var test = arrayOf("Bed","Bed Frame","Mattress","Pillow","Wardrobe","Table","Chair","Drawer","Blinds","Sink")
+
+
+        val intent = intent
+        val tmp = intent.getSerializableExtra("userInfo")
+        user = tmp as User
 
         val adapter = ArrayAdapter<String>(this, R.layout.simple_spinner_item, test)
         binding.actv.setAdapter(adapter)
@@ -48,9 +54,9 @@ class ReportDamageActivity : AppCompatActivity() {
     fun cancelDamage(view: View){
 
         val intent = Intent(this, HousingActivity::class.java)
-        var confirmedUser: User? = null
-        confirmedUser = User("d","b","db@gmail.com","123","A");
-        intent.putExtra("user", confirmedUser)
+        Toast.makeText(this,user.toString(), Toast.LENGTH_LONG).show()
+
+        intent.putExtra("user", user)
         startActivity(intent)
     }
 

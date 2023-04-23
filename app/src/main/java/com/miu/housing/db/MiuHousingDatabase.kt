@@ -12,7 +12,7 @@ import com.miu.housing.data.Converter
 
 @Database(
     entities = [User::class, Building::class, Room::class, Booking::class],
-    version = 1
+    version = 2
 )
 @TypeConverters(Converter::class)
 abstract class MiuHousingDatabase: RoomDatabase() {
@@ -40,6 +40,7 @@ abstract class MiuHousingDatabase: RoomDatabase() {
             context.applicationContext,
             MiuHousingDatabase::class.java,
             "notedatabase"
-        ).build()
+        ).fallbackToDestructiveMigration()
+            .build()
     }
 }
