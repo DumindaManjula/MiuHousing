@@ -49,7 +49,29 @@ class ReportDamageActivity : AppCompatActivity() {
             return
         }
 
-        Toast.makeText(this,"Damage request is submitted. MiuHousing will contact you soon ", Toast.LENGTH_LONG).show()
+        val dmgReason = binding.editTextReason.text
+        val dmgCondition = binding.editTextCondition.text
+
+        if (dmgReason.isBlank()) {
+            binding.editTextReason.error = "Reason required"
+            binding.editTextReason.requestFocus()
+            return
+        }
+
+        if (dmgCondition.isBlank()) {
+            binding.editTextCondition.error = "Condition required"
+            binding.editTextCondition.requestFocus()
+            return
+        }
+
+        Toast.makeText(this,"Notified damaged Item $selectedItem. MiuHousing will contact you soon ", Toast.LENGTH_LONG).show()
+
+        val intent = Intent(this, HousingActivity::class.java)
+        Toast.makeText(this,user.toString(), Toast.LENGTH_LONG).show()
+
+        intent.putExtra("user", user)
+        startActivity(intent)
+
     }
     fun cancelDamage(view: View){
 

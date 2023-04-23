@@ -19,13 +19,13 @@ class ReservationFragment(user:User) : Fragment() {
     ): View? {
         var view = inflater.inflate(R.layout.fragment_reservation, container, false)
         binding = FragmentReservationBinding.bind(view)
-//        binding.imageButton2.setOnClickListener {
-//
-//            Toast.makeText(context, "to Report a Damage", Toast.LENGTH_SHORT).show()
-//            val intent = Intent(context, ReportDamageActivity::class.java)
-//            intent.putExtra("userInfo",userInfo) // Here message is a key to retrieve the input text in the second activity
-//            startActivity(intent)
-//        }
+        binding.imageButton2.setOnClickListener {
+
+            Toast.makeText(context, "to Report a Damage", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, ReportDamageActivity::class.java)
+            intent.putExtra("userInfo",userInfo) // Here message is a key to retrieve the input text in the second activity
+            startActivity(intent)
+        }
 
         binding.imageButton3.setOnClickListener {
 
