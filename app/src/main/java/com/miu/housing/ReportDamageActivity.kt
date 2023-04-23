@@ -49,7 +49,7 @@ class ReportDamageActivity : AppCompatActivity() {
             return
         }
 
-        Toast.makeText(this,"Damage request is submitted. MiuHousing will contact you soon ", Toast.LENGTH_LONG).show()
+        Toast.makeText(this,"Damage request is submitted for item $selectedItem. MiuHousing will contact you soon ", Toast.LENGTH_LONG).show()
     }
     fun cancelDamage(view: View){
 
