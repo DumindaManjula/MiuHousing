@@ -40,7 +40,11 @@ class ReservationAdapter(var user: User, var list: ArrayList<ReservationData>): 
                     intent.putExtra("userInfo", user) // Here message is a key to retrieve the input text in the second activity
                     it.context.startActivity(intent)
                 }
-                4 -> {}
+                4 -> {
+                    val intent = Intent(it.context, ComplaintActivity::class.java)
+                    intent.putExtra("userInfo", user)
+                    it.context.startActivity(intent)
+                }
                 5 -> {}
             }
         }
