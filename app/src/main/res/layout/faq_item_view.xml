@@ -8,13 +8,17 @@
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="4dp"
     app:cardCornerRadius="8dp"
+    android:orientation="vertical"
     app:cardElevation="0dp">
 
     <com.robertlevonyan.views.expandable.Expandable
-        android:id="@+id/expand"
+        android:id="@+id/expend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:exp_expandIndicator="@drawable/ic_down">
+        app:exp_iconStyle="circle"
+        app:exp_animateExpand="true"
+        app:exp_backgroundColor="@color/purple_200"
+        app:exp_expandIndicator="@drawable/baseline_keyboard_double_arrow_down_24">
 
         <include
             android:id="@+id/header"
@@ -23,23 +27,6 @@
         <include
             android:id="@+id/content"
             layout="@layout/faq_item_content" />
+
     </com.robertlevonyan.views.expandable.Expandable>
 </androidx.cardview.widget.CardView>
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent">-->
-<!--    <com.robertlevonyan.views.expandable.Expandable-->
-<!--        android:id="@+id/expandable"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
-
-<!--        <include-->
-<!--            android:id="@+id/header"-->
-<!--            layout="@layout/faq_item_header" />-->
-
-<!--        <include-->
-<!--            android:id="@+id/content"-->
-<!--            layout="@layout/faq_item_content" />-->
-<!--    </com.robertlevonyan.views.expandable.Expandable>-->
-<!--</LinearLayout>-->

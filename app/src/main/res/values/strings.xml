@@ -45,6 +45,13 @@
     <!--Contact us-->
 
     <!--FAQ-->
+    <string name="faq_q_1">Question 1</string>
+    <string name="faq_a_1">Answer 1</string>
+    <string name="faq_q_2">Question 2</string>
+    <string name="faq_a_2">Answer 2</string>
+    <string name="faq_q_3">Question 3</string>
+    <string name="faq_a_3">Answer 3</string>
+
     <string name="damage_item_hint"><font size="10">Enter the damaged item</font></string>
 
 
