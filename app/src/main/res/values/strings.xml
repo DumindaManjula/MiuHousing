@@ -47,5 +47,20 @@
     <!--FAQ-->
     <string name="damage_item_hint"><font size="10">Enter the damaged item</font></string>
 
+    <string name="contact_name">Maharishi International University</string>
+    <string name="contact_address">1000 N 4th St, Fairfield, IA 52557</string>
+
+    <string name="contact_housing1">Housing/Mailroom Department</string>
+    <string name="contact_phone1">641-472-7000</string>
+    <string name="contact_ext1">ext. 4137</string>
+
+    <string name="contact_housing2">Housing Department</string>
+    <string name="contact_phone2">641-233-7634</string>
+    <string name="contact_email2">dhitchins@miu.edu</string>
+
+    <string name="contact_housing3">Housing Department</string>
+    <string name="contact_phone3">641-472-7000</string>
+    <string name="contact_ext3">ext. 4137</string>
+    <string name="contact_email3">housing@miu.edu</string>
 
 </resources>
