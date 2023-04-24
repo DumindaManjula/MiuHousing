@@ -1,6 +1,7 @@
 package com.miu.housing
 
 import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.miu.housing.data.ReservationData
 import com.miu.housing.databinding.ReservationViewBinding
 import com.miu.housing.db.User
+
 
 class ReservationAdapter(var user: User, var list: ArrayList<ReservationData>): RecyclerView.Adapter<ReservationAdapter.ReservationViewHolder>(){
     private lateinit var binding: ReservationViewBinding
@@ -45,7 +47,11 @@ class ReservationAdapter(var user: User, var list: ArrayList<ReservationData>): 
                     intent.putExtra("userInfo", user)
                     it.context.startActivity(intent)
                 }
-                5 -> {}
+                5 -> {
+                    val emergencyNumber = "+16414726382"
+                    val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", emergencyNumber, null))
+                    it.context.startActivity(intent)
+                }
             }
         }
     }
