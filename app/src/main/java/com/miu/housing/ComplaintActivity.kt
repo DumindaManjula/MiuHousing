@@ -24,7 +24,6 @@ class ComplaintActivity : AppCompatActivity() {
     }
     fun submitDamage(view: View){
         val dmgReason = binding.editTextReason.text
-        val dmgCondition = binding.editTextCondition.text
 
         if (dmgReason.isBlank()) {
             binding.editTextReason.error = "Reason required"

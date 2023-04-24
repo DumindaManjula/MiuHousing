@@ -43,35 +43,11 @@
                 app:layout_constraintTop_toBottomOf="parent" />
 
             <TextView
-                android:id="@+id/textView11"
-                style="@style/CustomLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Damaged Item*"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.125"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-            <AutoCompleteTextView
-                android:id="@+id/actv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/damage_item_hint"
-                android:inputType="text"
-                android:maxLines="1"
-                android:textColorHint="@color/gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.213"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-            <TextView
                 android:id="@+id/textView12"
                 style="@style/CustomLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reason for damage*"
+                android:text="Write complaint below*: "
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.125"
                 app:layout_constraintStart_toStartOf="parent"
@@ -88,30 +64,6 @@
                 app:layout_constraintHorizontal_bias="0.125"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView12"/>
-
-            <TextView
-                android:id="@+id/textView13"
-                style="@style/CustomLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Current condition*"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.125"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine2" />
-
-            <EditText
-                android:id="@+id/editTextCondition"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.125"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView13"/>
-
 
             <Button
                 android:id="@+id/button1"
