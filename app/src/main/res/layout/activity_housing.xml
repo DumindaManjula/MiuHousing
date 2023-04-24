@@ -28,7 +28,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="0dp"
-        android:paddingBottom="63dp"
+        android:paddingBottom="65dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_height="match_parent">
     </androidx.viewpager2.widget.ViewPager2>
 
