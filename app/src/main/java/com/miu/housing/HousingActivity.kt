@@ -29,7 +29,7 @@ class HousingActivity : AppCompatActivity() {
             add(ReservationData(getString(R.string.request_letter_title), R.drawable.mailing))
             add(ReservationData(getString(R.string.report_damage_title), R.drawable.repair))
             add(ReservationData(getString(R.string.complain_title), R.drawable.complain))
-            add(ReservationData(getString(R.string.emergency_title), R.drawable.phone))
+            add(ReservationData(getString(R.string.emergency_title), R.drawable.emergency))
         }
 
         binding = ActivityHousingBinding.inflate(layoutInflater)

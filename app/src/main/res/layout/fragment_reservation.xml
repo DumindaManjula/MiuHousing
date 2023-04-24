@@ -5,22 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ReservationFragment">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:src="@tools:sample/avatars" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/imageButton2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        tools:src="@tools:sample/avatars" />-->
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:src="@tools:sample/avatars" />
-
+<!--    <ImageButton-->
+<!--        android:id="@+id/imageButton3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        tools:src="@tools:sample/avatars" />-->
+    </ScrollView>
 </FrameLayout>

@@ -1,13 +1,15 @@
 package com.miu.housing
 
-import android.R
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import com.miu.housing.databinding.ActivityMainBinding
 import com.miu.housing.databinding.ActivityReportDamageBinding
 import com.miu.housing.db.User
@@ -28,7 +30,26 @@ class ReportDamageActivity : AppCompatActivity() {
         val tmp = intent.getSerializableExtra("userInfo")
         user = tmp as User
 
-        val adapter = ArrayAdapter<String>(this, R.layout.simple_spinner_item, test)
+        var fullname = "${user!!.firstName} ${user!!.lastName}"
+        val actionBar = supportActionBar
+        actionBar?.setDisplayShowTitleEnabled(false)
+        actionBar?.setDisplayShowCustomEnabled(true)
+        actionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        var params = ActionBar.LayoutParams(
+            ActionBar.LayoutParams.MATCH_PARENT,
+            ActionBar.LayoutParams.MATCH_PARENT,
+            Gravity.RIGHT
+        )
+        var viewActionBar = layoutInflater.inflate(com.miu.housing.R.layout.general_top_header,null)
+        actionBar?.setCustomView(viewActionBar, params)
+        var tview = viewActionBar.findViewById<TextView>(com.miu.housing.R.id.loginname)
+        tview.setText("Welcome $fullname") //com.miu.housing.R.string.app_name
+
+        var appName = getString(R.string.app_name) + " - " + getString(R.string.report_damage_title)
+        var aview = viewActionBar.findViewById<TextView>(com.miu.housing.R.id.apptitle)
+        aview.setText(appName)
+
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, test)
         binding.actv.setAdapter(adapter)
         binding.actv.threshold = 1
         Toast.makeText(this,"This is my message", Toast.LENGTH_LONG).show()

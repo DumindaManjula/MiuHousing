@@ -13,7 +13,7 @@ import com.miu.housing.data.ReservationData
 import com.miu.housing.databinding.FragmentReservationBinding
 import com.miu.housing.db.User
 
-class ReservationFragment(user:User, rData: ArrayList<ReservationData>) : Fragment() {
+class ReservationFragment(user: User, rData: ArrayList<ReservationData>) : Fragment() {
     private lateinit var binding: FragmentReservationBinding
     var userInfo = user
     var reservationData = rData
@@ -25,23 +25,7 @@ class ReservationFragment(user:User, rData: ArrayList<ReservationData>) : Fragme
         var view = inflater.inflate(R.layout.fragment_reservation, container, false)
         binding = FragmentReservationBinding.bind(view)
         binding.rcv.layoutManager = GridLayoutManager(context, 2)
-        binding.rcv.adapter = ReservationAdapter(reservationData)
-
-        binding.imageButton2.setOnClickListener {
-
-            Toast.makeText(context, "to Report a Damage", Toast.LENGTH_SHORT).show()
-            val intent = Intent(context, ReportDamageActivity::class.java)
-            intent.putExtra("userInfo", userInfo) // Here message is a key to retrieve the input text in the second activity
-            startActivity(intent)
-        }
-
-        binding.imageButton3.setOnClickListener {
-
-            Toast.makeText(context, "to Request a Letter", Toast.LENGTH_SHORT).show()
-            val intent = Intent(context, RequestingLetterActivity::class.java)
-            intent.putExtra("userInfo",userInfo)
-            startActivity(intent)
-        }
+        binding.rcv.adapter = ReservationAdapter(userInfo, reservationData)
 
         return binding.root
     }
