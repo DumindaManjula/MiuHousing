@@ -31,7 +31,7 @@ class RequestingLetterActivity : AppCompatActivity() {
         val tmp = intent.getSerializableExtra("userInfo")
         user = tmp as User
 
-//        var fullname = "${user?.firstName} ${user?.lastName}"
+        var fullname = "${user?.firstName} ${user?.lastName}"
         val actionBar = supportActionBar
         actionBar?.setDisplayShowTitleEnabled(false)
         actionBar?.setDisplayShowCustomEnabled(true)
@@ -43,11 +43,11 @@ class RequestingLetterActivity : AppCompatActivity() {
         )
         var viewActionBar = layoutInflater.inflate(R.layout.general_top_header,null)
         actionBar?.setCustomView(viewActionBar, params)
-//        var tview = viewActionBar.findViewById<TextView>(R.id.loginname)
-//        tview.setText("Welcome $fullname")
+        var tview = viewActionBar.findViewById<TextView>(R.id.loginname)
+        tview.setText("Welcome $fullname")
         var appName = getString(R.string.app_name)
         var aview = viewActionBar.findViewById<TextView>(R.id.apptitle)
-        aview.setText(appName)
+        aview.setText("$appName-Request Letter")
     }
 
     @SuppressLint("RestrictedApi")

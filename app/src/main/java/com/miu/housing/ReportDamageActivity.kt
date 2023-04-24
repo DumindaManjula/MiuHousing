@@ -35,8 +35,7 @@ class ReportDamageActivity : AppCompatActivity() {
         val tmp = intent.getSerializableExtra("userInfo")
         user = tmp as User
 
-
-        //        var fullname = "${user?.firstName} ${user?.lastName}"
+        var fullname = "${user?.firstName} ${user?.lastName}"
         val actionBar = supportActionBar
         actionBar?.setDisplayShowTitleEnabled(false)
         actionBar?.setDisplayShowCustomEnabled(true)
@@ -48,11 +47,11 @@ class ReportDamageActivity : AppCompatActivity() {
         )
         var viewActionBar = layoutInflater.inflate(com.miu.housing.R.layout.general_top_header,null)
         actionBar?.setCustomView(viewActionBar, params)
-//        var tview = viewActionBar.findViewById<TextView>(R.id.loginname)
-//        tview.setText("Welcome $fullname")
+        var tview = viewActionBar.findViewById<TextView>(com.miu.housing.R.id.loginname)
+        tview.setText("$fullname")
         var appName = getString(com.miu.housing.R.string.app_name)
         var aview = viewActionBar.findViewById<TextView>(com.miu.housing.R.id.apptitle)
-        aview.setText(appName)
+        aview.setText("$appName-Report Damage")
 
         val adapter = ArrayAdapter<String>(this, R.layout.simple_spinner_item, test)
         binding.actv.setAdapter(adapter)
