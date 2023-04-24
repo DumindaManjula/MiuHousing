@@ -7,21 +7,31 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.view.menu.MenuBuilder
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.miu.housing.data.ReservationData
 import com.miu.housing.databinding.ActivityHousingBinding
 import com.miu.housing.db.User
-import org.w3c.dom.Text
 
 class HousingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHousingBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        var reservationData = arrayListOf<ReservationData>().apply {
+            add(ReservationData(getString(R.string.reserve_room_title), R.drawable.checkin))
+            add(ReservationData(getString(R.string.return_room_title), R.drawable.checkout))
+            add(ReservationData(getString(R.string.request_letter_title), R.drawable.mailing))
+            add(ReservationData(getString(R.string.report_damage_title), R.drawable.repair))
+            add(ReservationData(getString(R.string.complain_title), R.drawable.complain))
+            add(ReservationData(getString(R.string.emergency_title), R.drawable.emergency))
+        }
+
         binding = ActivityHousingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -46,7 +56,7 @@ class HousingActivity : AppCompatActivity() {
         var aview = viewActionBar.findViewById<TextView>(R.id.apptitle)
         aview.setText(appName)
 
-        var housingAdapter = HousingAdapter(this, user)
+        var housingAdapter = HousingAdapter(this, user, reservationData)
         binding.vpager.adapter = housingAdapter
         binding.tlayout.tabGravity = TabLayout.GRAVITY_FILL
 
@@ -88,7 +98,6 @@ class HousingActivity : AppCompatActivity() {
             R.id.logout -> {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
-                //Toast.makeText(this, "Test test", Toast.LENGTH_SHORT).show()
             }
         }
 

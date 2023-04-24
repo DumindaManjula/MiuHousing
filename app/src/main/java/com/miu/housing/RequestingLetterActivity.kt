@@ -4,8 +4,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.Html
+import android.view.Gravity
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.miu.housing.databinding.ActivityRequestingLetterBinding
 import com.miu.housing.db.User
@@ -23,6 +26,23 @@ class RequestingLetterActivity : AppCompatActivity() {
         val intent = intent
         val tmp = intent.getSerializableExtra("userInfo")
         user = tmp as User
+        var fullname = "${user!!.firstName} ${user!!.lastName}"
+        val actionBar = supportActionBar
+        actionBar?.setDisplayShowTitleEnabled(false)
+        actionBar?.setDisplayShowCustomEnabled(true)
+        actionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        var params = ActionBar.LayoutParams(
+            ActionBar.LayoutParams.MATCH_PARENT,
+            ActionBar.LayoutParams.MATCH_PARENT,
+            Gravity.RIGHT
+        )
+        var viewActionBar = layoutInflater.inflate(R.layout.general_top_header,null)
+        actionBar?.setCustomView(viewActionBar, params)
+        var tview = viewActionBar.findViewById<TextView>(R.id.loginname)
+        tview.setText("Welcome $fullname")
+        var appName = getString(R.string.app_name) + " - " + getString(R.string.request_letter_title)
+        var aview = viewActionBar.findViewById<TextView>(R.id.apptitle)
+        aview.setText(appName)
     }
 
     fun requestLetter(view: View){
