@@ -6,13 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".ReservationFragment">
 
-    <GridLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:id="@+id/glayout">
-
-    </GridLayout>
+        android:layout_height="match_parent" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -20,10 +17,10 @@
         android:layout_height="wrap_content"
         tools:src="@tools:sample/avatars" />
 
-<!--    <ImageButton-->
-<!--        android:id="@+id/imageButton3"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        tools:src="@tools:sample/avatars" />-->
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:src="@tools:sample/avatars" />
 
 </FrameLayout>
