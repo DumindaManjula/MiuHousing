@@ -1,15 +1,20 @@
 package com.miu.housing
 
+import android.R
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.view.menu.MenuBuilder
 import com.miu.housing.databinding.ActivityMainBinding
 import com.miu.housing.databinding.ActivityReportDamageBinding
 import com.miu.housing.db.User
@@ -30,7 +35,8 @@ class ReportDamageActivity : AppCompatActivity() {
         val tmp = intent.getSerializableExtra("userInfo")
         user = tmp as User
 
-        var fullname = "${user!!.firstName} ${user!!.lastName}"
+
+        //        var fullname = "${user?.firstName} ${user?.lastName}"
         val actionBar = supportActionBar
         actionBar?.setDisplayShowTitleEnabled(false)
         actionBar?.setDisplayShowCustomEnabled(true)
@@ -42,17 +48,15 @@ class ReportDamageActivity : AppCompatActivity() {
         )
         var viewActionBar = layoutInflater.inflate(com.miu.housing.R.layout.general_top_header,null)
         actionBar?.setCustomView(viewActionBar, params)
-        var tview = viewActionBar.findViewById<TextView>(com.miu.housing.R.id.loginname)
-        tview.setText("Welcome $fullname") //com.miu.housing.R.string.app_name
-
-        var appName = getString(R.string.app_name) + " - " + getString(R.string.report_damage_title)
+//        var tview = viewActionBar.findViewById<TextView>(R.id.loginname)
+//        tview.setText("Welcome $fullname")
+        var appName = getString(com.miu.housing.R.string.app_name)
         var aview = viewActionBar.findViewById<TextView>(com.miu.housing.R.id.apptitle)
         aview.setText(appName)
 
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, test)
+        val adapter = ArrayAdapter<String>(this, R.layout.simple_spinner_item, test)
         binding.actv.setAdapter(adapter)
         binding.actv.threshold = 1
-        Toast.makeText(this,"This is my message", Toast.LENGTH_LONG).show()
 
         binding.actv.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
@@ -88,8 +92,6 @@ class ReportDamageActivity : AppCompatActivity() {
         Toast.makeText(this,"Notified damaged Item $selectedItem. MiuHousing will contact you soon ", Toast.LENGTH_LONG).show()
 
         val intent = Intent(this, HousingActivity::class.java)
-        Toast.makeText(this,user.toString(), Toast.LENGTH_LONG).show()
-
         intent.putExtra("user", user)
         startActivity(intent)
 
@@ -97,10 +99,32 @@ class ReportDamageActivity : AppCompatActivity() {
     fun cancelDamage(view: View){
 
         val intent = Intent(this, HousingActivity::class.java)
-        Toast.makeText(this,user.toString(), Toast.LENGTH_LONG).show()
-
         intent.putExtra("user", user)
         startActivity(intent)
+    }
+
+    @SuppressLint("RestrictedApi")
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        if(menu is MenuBuilder) {
+            menu.setOptionalIconsVisible(true)
+        }
+        menuInflater.inflate(com.miu.housing.R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            com.miu.housing.R.id.gmail -> {
+                Toast.makeText(this, item.title.toString(), Toast.LENGTH_SHORT).show()
+            }
+            com.miu.housing.R.id.logout -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                //Toast.makeText(this, "Test test", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 }
