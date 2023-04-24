@@ -84,7 +84,7 @@ class RequestingLetterActivity : AppCompatActivity() {
             return
         }
 
-        var link:String? = "housing@miu.edu"
+        var link:String? = "dmudiyanselage@miu.edu"
 
         val emailIntent = Intent(Intent.ACTION_SENDTO)
         emailIntent.data = Uri.parse("mailto:")
