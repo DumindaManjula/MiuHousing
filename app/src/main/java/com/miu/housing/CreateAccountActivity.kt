@@ -87,7 +87,6 @@ class CreateAccountActivity : BaseActivity() {
             }
         }
 
-
     }
 
     override fun onBackPressed() {

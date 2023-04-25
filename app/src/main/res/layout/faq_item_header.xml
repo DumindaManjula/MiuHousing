@@ -3,17 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/header"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="left"
+    android:layout_height="wrap_content"
+    android:background="@color/info_header"
     android:orientation="vertical"
-    >
+    android:padding="0dp">
+
     <TextView
         android:id="@+id/header_text"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:gravity="center"
+        android:gravity="left"
         android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:textAppearance="?textAppearanceHeadline5"
         android:textStyle="bold" />
 
 </LinearLayout>

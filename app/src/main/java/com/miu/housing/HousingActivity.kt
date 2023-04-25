@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
@@ -45,23 +46,13 @@ class HousingActivity : AppCompatActivity() {
         val intent = intent
         val tmp = intent.getSerializableExtra("user")
         val user = tmp as User
-        var fullname = "${user.firstName} ${user.lastName}"
-        val actionBar = supportActionBar
-        actionBar?.setDisplayShowTitleEnabled(false)
-        actionBar?.setDisplayShowCustomEnabled(true)
-        actionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
-        var params = ActionBar.LayoutParams(
-            ActionBar.LayoutParams.MATCH_PARENT,
-            ActionBar.LayoutParams.MATCH_PARENT,
-            Gravity.RIGHT
-        )
-        var viewActionBar = layoutInflater.inflate(R.layout.general_top_header,null)
-        actionBar?.setCustomView(viewActionBar, params)
-        var tview = viewActionBar.findViewById<TextView>(R.id.loginname)
-        tview.setText("Welcome $fullname")
-        var appName = getString(R.string.app_name)
-        var aview = viewActionBar.findViewById<TextView>(R.id.apptitle)
-        aview.setText(appName)
+        var rightText = "Welcome ${user.firstName} ${user.lastName}"
+        var leftText = getString(R.string.app_name)
+
+        val actionBar: ActionBar? = supportActionBar
+        if (actionBar != null) {
+            showCustomActionBar(actionBar, layoutInflater, leftText, rightText)
+        }
 
         var housingAdapter = HousingAdapter(this, user, reservationData, faqData)
         binding.vpager.adapter = housingAdapter
