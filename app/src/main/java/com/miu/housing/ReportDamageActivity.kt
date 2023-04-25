@@ -60,8 +60,8 @@ class ReportDamageActivity : AppCompatActivity() {
         binding.actv.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
                 selectedItem = parent.getItemAtPosition(position).toString()
-                Toast.makeText(this,"Item selected at $position is "
-                        + parent.getItemAtPosition(position), Toast.LENGTH_LONG).show()
+//                Toast.makeText(this,"Item selected at $position is "
+//                        + parent.getItemAtPosition(position), Toast.LENGTH_LONG).show()
             }
     }
 
