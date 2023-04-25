@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.RecyclerView
 import com.miu.housing.data.ReservationData
 import com.miu.housing.databinding.ReservationViewBinding
@@ -50,7 +51,11 @@ class ReservationAdapter(var user: User, var list: ArrayList<ReservationData>): 
                 5 -> {
                     val emergencyNumber = "+16414726382"
                     val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", emergencyNumber, null))
-                    it.context.startActivity(intent)
+                    if( intent.resolveActivity(it.context.packageManager) == null){
+                        Toast.makeText(binding.root.context, "Device does not allow phone call", Toast.LENGTH_LONG).show()
+                    } else {
+                        it.context.startActivity(intent)
+                    }
                 }
             }
         }
