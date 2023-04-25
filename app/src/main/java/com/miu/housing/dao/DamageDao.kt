@@ -16,4 +16,7 @@ interface DamageDao {
     @Query(" SELECT * FROM DAMAGE ")
     suspend fun getAllDamage():List<Damage>
 
+    @Insert
+    suspend fun addMultipleDamages(vararg damage: Damage)
+
 }

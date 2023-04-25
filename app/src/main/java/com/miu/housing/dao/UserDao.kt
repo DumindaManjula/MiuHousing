@@ -9,6 +9,9 @@ interface UserDao {
     @Insert
     suspend fun addUser(user:User)
 
+    @Insert
+    suspend fun addMultipleUsers(vararg user: User)
+
     @Query(" SELECT * FROM USER ")
     suspend fun getAllUsers():List<User>
 
