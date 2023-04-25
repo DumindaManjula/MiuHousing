@@ -76,7 +76,7 @@ class CreateAccountActivity : BaseActivity() {
                 } else {
                     var user = MiuHousingDatabase(it).getUserDao().addUser(user)
                     if(user != null){
-                        it.toast("User Created")
+                        it.toast("User saved successfully.")
                         val data = Intent()
                         setResult(Activity.RESULT_OK, data)
                         finish()

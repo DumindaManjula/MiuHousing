@@ -32,11 +32,11 @@ class MainActivity : BaseActivity() {
         }
 
         var resultContracts = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result->
-            if(result.resultCode == Activity.RESULT_OK) {
-                Toast.makeText(this, "User saved successfully.", Toast.LENGTH_LONG).show()
-            }
-            else
-                Toast.makeText(this, "Failed to save user.", Toast.LENGTH_LONG).show()
+//            if(result.resultCode == Activity.RESULT_OK) {
+//                Toast.makeText(this, "User saved successfully.", Toast.LENGTH_LONG).show()
+//            }
+//            else
+//                Toast.makeText(this, "Failed to save user.", Toast.LENGTH_LONG).show()
         }
 
         binding.btnCreateNewAccount.setOnClickListener {
