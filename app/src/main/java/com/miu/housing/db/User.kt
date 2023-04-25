@@ -10,7 +10,7 @@ data class User(var firstName:String?,
                 var emailId:String?,
                 var password:String?,
                 var status:String?,
-                var isAdmin:Int? = null ) :
+                var isAdmin:Int? = 0 ) :
     Serializable {
     @PrimaryKey(autoGenerate = true)
     var id:Int = 0

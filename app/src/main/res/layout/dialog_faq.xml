@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="20dp"
+    android:layout_marginTop="15dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="20dp"
+    tools:context=".RequestingLetterActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_marginTop="15dp"
+        app:cardElevation="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:gravity="fill_vertical"
+            android:paddingHorizontal="25dp"
+            android:paddingBottom="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                style="@style/CustomInput"
+                android:hint="@string/faq_question"
+                android:inputType="textMultiLine"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                style="@style/CustomInput"
+                android:hint="@string/faq_answer"
+                android:inputType="textMultiLine"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/faq_level_title"
+                style="@style/CustomLabel"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_marginLeft="-5dp"/>
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:checkedButton="@+id/normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RadioButton
+                    android:id="@+id/normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/faq_level_normal"
+
+                    />
+                <RadioButton
+                    android:id="@+id/medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/faq_level_medium"/>
+                <RadioButton
+                    android:id="@+id/heigh"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/faq_level_high"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
