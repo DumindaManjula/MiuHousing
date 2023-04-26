@@ -54,7 +54,7 @@
             app:layout_constraintTop_toBottomOf="@+id/title">
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/textView16"
                 style="@style/CustomLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.125"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
             <EditText
                 android:id="@+id/firstName"
@@ -109,6 +109,27 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
             <TextView
+                android:id="@+id/textView15"
+                style="@style/CustomLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Student Id*"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lastName" />
+
+            <EditText
+                android:id="@+id/studentId"
+                style="@style/CustomInput"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/edit_text_background"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+            <TextView
                 android:id="@+id/textView13"
                 style="@style/CustomLabel"
                 android:layout_width="wrap_content"
@@ -116,7 +137,7 @@
                 android:text="Email Address*"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lastName" />
+                app:layout_constraintTop_toBottomOf="@+id/studentId" />
 
             <EditText
                 android:id="@+id/email"

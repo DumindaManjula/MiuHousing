@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
@@ -13,7 +14,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.view.menu.MenuBuilder
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.miu.housing.data.FaqData
 import com.miu.housing.data.ReservationData
 import com.miu.housing.databinding.ActivityHousingBinding
 import com.miu.housing.db.User
@@ -33,37 +33,21 @@ class HousingActivity : AppCompatActivity() {
             add(ReservationData(getString(R.string.emergency_title), R.drawable.emergency))
         }
 
-        var faqData = arrayListOf<FaqData>().apply {
-            add(FaqData(1, getString(R.string.faq_q_1), getString(R.string.faq_a_1), 1))
-            add(FaqData(2, getString(R.string.faq_q_2), getString(R.string.faq_a_2), 2))
-            add(FaqData(3, getString(R.string.faq_q_3), getString(R.string.faq_a_3), 3))
-        }
-
         binding = ActivityHousingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val intent = intent
         val tmp = intent.getSerializableExtra("user")
         val user = tmp as User
-        var fullname = "${user.firstName} ${user.lastName}"
-        val actionBar = supportActionBar
-        actionBar?.setDisplayShowTitleEnabled(false)
-        actionBar?.setDisplayShowCustomEnabled(true)
-        actionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
-        var params = ActionBar.LayoutParams(
-            ActionBar.LayoutParams.MATCH_PARENT,
-            ActionBar.LayoutParams.MATCH_PARENT,
-            Gravity.RIGHT
-        )
-        var viewActionBar = layoutInflater.inflate(R.layout.general_top_header,null)
-        actionBar?.setCustomView(viewActionBar, params)
-        var tview = viewActionBar.findViewById<TextView>(R.id.loginname)
-        tview.setText("Welcome $fullname")
-        var appName = getString(R.string.app_name)
-        var aview = viewActionBar.findViewById<TextView>(R.id.apptitle)
-        aview.setText(appName)
+        var rightText = "Welcome ${user.firstName} ${user.lastName}"
+        var leftText = getString(R.string.app_name)
 
-        var housingAdapter = HousingAdapter(this, user, reservationData, faqData)
+        val actionBar: ActionBar? = supportActionBar
+        if (actionBar != null) {
+            showCustomActionBar(actionBar, layoutInflater, leftText, rightText)
+        }
+
+        var housingAdapter = HousingAdapter(this, user, reservationData)
         binding.vpager.adapter = housingAdapter
         binding.tlayout.tabGravity = TabLayout.GRAVITY_FILL
 
@@ -99,13 +83,13 @@ class HousingActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.gmail -> {
-                Toast.makeText(this, item.title.toString(), Toast.LENGTH_SHORT).show()
-            }
-            R.id.logout -> {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-            }
+//            R.id.gmail -> {
+//                Toast.makeText(this, item.title.toString(), Toast.LENGTH_SHORT).show()
+//            }
+//            R.id.logout -> {
+//                val intent = Intent(this, MainActivity::class.java)
+//                startActivity(intent)
+//            }
         }
 
         return super.onOptionsItemSelected(item)

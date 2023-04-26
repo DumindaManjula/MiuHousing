@@ -39,4 +39,66 @@
         <item name="android:layout_height">1dip</item>
         <item name="android:background">@color/purple_500</item>
     </style>
+
+    <!-- AlertDialog theme-->
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
+        <item name="android:alertDialogTheme">@style/MyAlertDialogTheme</item>
+        <item name="android:alertDialogStyle">@style/MyAlertDialogStyle</item>
+    </style>
+
+    <style name="MyBorderlessButton">
+        <!-- Set background drawable and text size of the buttons here -->
+        <item name="android:background">@color/info_header</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="MyButtonBar">
+        <!-- Define a background for the button bar and a divider between the buttons here -->
+        <item name="android:divider">@color/info_header</item>
+        <item name="android:dividerPadding">15dp</item>
+        <item name="android:showDividers"></item>
+        <item name="android:background">@color/info_body</item>
+    </style>
+
+    <style name="MyAlertDialogTitle">
+        <item name="android:maxLines">1</item>
+        <item name="android:scrollHorizontally">true</item>
+    </style>
+
+    <style name="MyAlertTextAppearance">
+        <!-- Set text size and color of title and message here -->
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="MyAlertDialogTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowTitleStyle">@style/MyAlertDialogTitle</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:textAppearanceMedium">@style/MyAlertTextAppearance</item>
+        <!-- If you don't want your own button bar style use
+                @android:style/Holo.Light.ButtonBar.AlertDialog
+                and
+                ?android:attr/borderlessButtonStyle
+             instead of @style/MyButtonBar and @style/MyBorderlessButton -->
+        <item name="android:buttonBarStyle">@style/MyButtonBar</item>
+        <item name="android:buttonBarButtonStyle">@style/MyBorderlessButton</item>
+    </style>
+
+    <style name="MyAlertDialogStyle">
+        <!-- Define background colors of title, message, buttons, etc. here -->
+        <item name="android:fullDark">@color/info_body</item>
+        <item name="android:topDark">@color/info_header</item>
+        <item name="android:centerDark">@color/info_body</item>
+        <item name="android:bottomDark">@color/info_header</item>
+        <item name="android:fullBright">@color/success_body</item>
+        <item name="android:topBright">@color/success_header</item>
+        <item name="android:centerBright">@color/success_body</item>
+        <item name="android:bottomBright">@color/success_header</item>
+        <item name="android:bottomMedium">@color/warning_header</item>
+        <item name="android:centerMedium">@color/warning_body</item>
+    </style>
 </resources>

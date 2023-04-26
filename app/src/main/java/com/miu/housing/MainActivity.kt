@@ -1,5 +1,6 @@
 package com.miu.housing
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
@@ -141,13 +142,14 @@ class MainActivity : BaseActivity() {
         return email.matches(emailRegex.toRegex())
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun initializeSampleData() {
 
         //User Account data
-        val user1 = User("John", "Wick", "john@gmail.com", "123", "A")
-        val user2 = User("Mark", "Taylor", "mark@gmail.com", "123", "A")
-        val user3 = User("Andrew", "Russle", "andrew@gmail.com", "123", "A")
-        val user4 = User("Shane", "Watson", "shane@gmail.com", "123", "A")
+        val user1 = User("John", "Wick", "john@gmail.com", "123", "A", "613479", 1)
+        val user2 = User("Mark", "Taylor", "mark@gmail.com", "123", "A", "613479", 1)
+        val user3 = User("Andrew", "Russle", "andrew@gmail.com", "123", "A", "613479", 1)
+        val user4 = User("Shane", "Watson", "shane@gmail.com", "123", "A", "613479", 1)
 
         var building1 = Building("Neptune",2, R.drawable.building1)
         var building2 = Building("Pluto",3, R.drawable.building2)
@@ -174,7 +176,6 @@ class MainActivity : BaseActivity() {
 
         //Damage Items data
         val damageItem1 = Damage("Table", "Too old", "Not usable")
-        val damageItem2 = Damage("Chair", "Not Strong one", "Not usable")
 
 //        if (prefs!!.getBoolean("firstrun",true)) {
             launch {
@@ -188,7 +189,7 @@ class MainActivity : BaseActivity() {
                     }
 
                     var damage = MiuHousingDatabase(it).getDamageDao()
-                        .addMultipleDamages(damageItem1, damageItem2)
+                        .addMultipleDamages(damageItem1)
                     if (damage != null) {
                         Log.i(MY_MIU_TAG, "Inserted all damages at installation.......")
                     } else {

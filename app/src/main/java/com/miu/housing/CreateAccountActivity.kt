@@ -2,16 +2,11 @@ package com.miu.housing
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import com.miu.housing.db.User
 import com.miu.housing.databinding.ActivityCreateAccountBinding
 import com.miu.housing.db.MiuHousingDatabase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class CreateAccountActivity : BaseActivity() {
@@ -23,6 +18,7 @@ class CreateAccountActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
@@ -32,6 +28,7 @@ class CreateAccountActivity : BaseActivity() {
 
         var fn = binding.firstName.text
         var ln = binding.lastName.text
+        var si = binding.studentId.text
         var mail = binding.email.text
         var pwd = binding.password.text
 
@@ -44,6 +41,12 @@ class CreateAccountActivity : BaseActivity() {
         if (ln.isEmpty()) {
             binding.lastName.error = "Lastname Required"
             binding.lastName.requestFocus()
+            return
+        }
+
+        if (si.isEmpty()) {
+            binding.studentId.error = "Student Id Required"
+            binding.studentId.requestFocus()
             return
         }
 
@@ -65,7 +68,7 @@ class CreateAccountActivity : BaseActivity() {
             return
         }
 
-        val user = User(fn.toString(), ln.toString(), mail.toString(), pwd.toString(), "A")
+        val user = User(fn.toString(), ln.toString(), mail.toString(), pwd.toString(), "A",si.toString())
 
         launch {
             applicationContext?.let {
@@ -86,7 +89,6 @@ class CreateAccountActivity : BaseActivity() {
                 }
             }
         }
-
 
     }
 

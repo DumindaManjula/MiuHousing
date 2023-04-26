@@ -11,6 +11,17 @@
     <color name="btn_blue">#03A9F4</color>
     <color name="gray">#B7B9BA</color>
     <color name="app_main_color">#0072CE</color>
+    <color name="colorBlue1">#64B5F6</color>
+    <color name="colorCyan1">#4DD0E1</color>
+    <color name="colorTeal1">#4DB6AC</color>
+    <color name="danger_header">#d32f2f</color>
+    <color name="danger_body">#ef5350</color>
+    <color name="warning_header">#ed6c02</color>
+    <color name="warning_body">#ff9800</color>
+    <color name="info_header">#0288d1</color>
+    <color name="info_body">#3C9CEA</color>
+    <color name="success_header">#2e7d32</color>
+    <color name="success_body">#4caf50</color>
     <color name="green">#4CAF50</color>
     <color name="grey">#CCC</color>
     <color name="blue">#03A9F4</color>

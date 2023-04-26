@@ -31,23 +31,12 @@ class RequestingLetterActivity : AppCompatActivity() {
         val tmp = intent.getSerializableExtra("userInfo")
         user = tmp as User
 
-        var fullname = "${user?.firstName} ${user?.lastName}"
-        val actionBar = supportActionBar
-        actionBar?.setDisplayShowTitleEnabled(false)
-        actionBar?.setDisplayShowCustomEnabled(true)
-        actionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
-        var params = ActionBar.LayoutParams(
-            ActionBar.LayoutParams.MATCH_PARENT,
-            ActionBar.LayoutParams.MATCH_PARENT,
-            Gravity.RIGHT
-        )
-        var viewActionBar = layoutInflater.inflate(R.layout.general_top_header,null)
-        actionBar?.setCustomView(viewActionBar, params)
-        var tview = viewActionBar.findViewById<TextView>(R.id.loginname)
-        tview.setText("Welcome $fullname")
-        var appName = getString(R.string.app_name)
-        var aview = viewActionBar.findViewById<TextView>(R.id.apptitle)
-        aview.setText("$appName-Request Letter")
+        var rightText = "${user?.firstName} ${user?.lastName}"
+        var leftText = getString(R.string.app_name) + " - Request Letter"
+        val actionBar: ActionBar? = supportActionBar
+        if(actionBar != null) {
+            showCustomActionBar(actionBar, layoutInflater, leftText, rightText)
+        }
     }
 
     @SuppressLint("RestrictedApi")
@@ -61,14 +50,14 @@ class RequestingLetterActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.gmail -> {
-                Toast.makeText(this, item.title.toString(), Toast.LENGTH_SHORT).show()
-            }
-            R.id.logout -> {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                //Toast.makeText(this, "Test test", Toast.LENGTH_SHORT).show()
-            }
+//            R.id.gmail -> {
+//                Toast.makeText(this, item.title.toString(), Toast.LENGTH_SHORT).show()
+//            }
+//            R.id.logout -> {
+//                val intent = Intent(this, MainActivity::class.java)
+//                startActivity(intent)
+//                //Toast.makeText(this, "Test test", Toast.LENGTH_SHORT).show()
+//            }
         }
 
         return super.onOptionsItemSelected(item)
@@ -119,7 +108,6 @@ class RequestingLetterActivity : AppCompatActivity() {
     fun cancelRequest(view: View){
 
         val intent = Intent(this, HousingActivity::class.java)
-        Toast.makeText(this,user.toString(), Toast.LENGTH_LONG).show()
 
         intent.putExtra("user", user)
         startActivity(intent)
