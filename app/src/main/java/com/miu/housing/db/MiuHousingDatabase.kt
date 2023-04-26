@@ -4,15 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.miu.housing.dao.BookingDao
-import com.miu.housing.dao.BuildingDao
-import com.miu.housing.dao.RoomDao
-import com.miu.housing.dao.UserDao
+import com.miu.housing.dao.*
 import com.miu.housing.data.Converter
 
 @Database(
-    entities = [User::class, Building::class, Room::class, Booking::class],
-    version = 3
+    entities = [User::class, Building::class, Room::class, Booking::class, Faq::class],
+    version = 4
 )
 @TypeConverters(Converter::class)
 abstract class MiuHousingDatabase: RoomDatabase() {
@@ -24,6 +21,8 @@ abstract class MiuHousingDatabase: RoomDatabase() {
     abstract fun getRoomDao(): RoomDao
 
     abstract fun getBookingDao(): BookingDao
+
+    abstract fun getFaqDao(): FaqDao
 
     // Build RoomDB
     companion object {

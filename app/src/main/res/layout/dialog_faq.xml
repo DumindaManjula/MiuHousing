@@ -32,16 +32,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="parent">
             <EditText
+                android:id="@+id/etQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 style="@style/CustomInput"
+                android:lines="3"
                 android:hint="@string/faq_question"
                 android:inputType="textMultiLine"
                 />
             <EditText
+                android:id="@+id/etAnswer"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 style="@style/CustomInput"
+                android:lines="3"
                 android:hint="@string/faq_answer"
                 android:inputType="textMultiLine"
                 />
@@ -64,7 +68,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/faq_level_normal"
-
                     />
                 <RadioButton
                     android:id="@+id/medium"
@@ -72,7 +75,7 @@
                     android:layout_height="match_parent"
                     android:text="@string/faq_level_medium"/>
                 <RadioButton
-                    android:id="@+id/heigh"
+                    android:id="@+id/high"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/faq_level_high"/>

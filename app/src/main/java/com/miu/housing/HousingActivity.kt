@@ -14,7 +14,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.view.menu.MenuBuilder
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.miu.housing.data.FaqData
 import com.miu.housing.data.ReservationData
 import com.miu.housing.databinding.ActivityHousingBinding
 import com.miu.housing.db.User
@@ -34,12 +33,6 @@ class HousingActivity : AppCompatActivity() {
             add(ReservationData(getString(R.string.emergency_title), R.drawable.emergency))
         }
 
-        var faqData = arrayListOf<FaqData>().apply {
-            add(FaqData(1, getString(R.string.faq_q_1), getString(R.string.faq_a_1), 1))
-            add(FaqData(2, getString(R.string.faq_q_2), getString(R.string.faq_a_2), 2))
-            add(FaqData(3, getString(R.string.faq_q_3), getString(R.string.faq_a_3), 3))
-        }
-
         binding = ActivityHousingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -54,7 +47,7 @@ class HousingActivity : AppCompatActivity() {
             showCustomActionBar(actionBar, layoutInflater, leftText, rightText)
         }
 
-        var housingAdapter = HousingAdapter(this, user, reservationData, faqData)
+        var housingAdapter = HousingAdapter(this, user, reservationData)
         binding.vpager.adapter = housingAdapter
         binding.tlayout.tabGravity = TabLayout.GRAVITY_FILL
 

@@ -3,13 +3,12 @@ package com.miu.housing
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.miu.housing.data.FaqData
 import com.miu.housing.databinding.FaqItemViewBinding
-import com.miu.housing.db.User
+import com.miu.housing.db.Faq
 
-class FaqAdapter(var faqList: ArrayList<FaqData>) : RecyclerView.Adapter<FaqAdapter.FaqViewHolder>() {
+class FaqAdapter() : RecyclerView.Adapter<FaqAdapter.FaqViewHolder>() {
     private lateinit var binding : FaqItemViewBinding
-
+    var faqList: List<Faq> = emptyList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FaqViewHolder {
         binding = FaqItemViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FaqViewHolder(binding)

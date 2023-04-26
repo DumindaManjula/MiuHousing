@@ -2,16 +2,11 @@ package com.miu.housing
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import com.miu.housing.db.User
 import com.miu.housing.databinding.ActivityCreateAccountBinding
 import com.miu.housing.db.MiuHousingDatabase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class CreateAccountActivity : BaseActivity() {
@@ -23,6 +18,7 @@ class CreateAccountActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         if (supportActionBar != null) {
             supportActionBar!!.hide()
         }
@@ -37,32 +33,27 @@ class CreateAccountActivity : BaseActivity() {
 
         if (fn.isEmpty()) {
             binding.firstName.error = "Firstname Required"
-            binding.firstName.requestFocus()
-            return
+            //binding.firstName.requestFocus()
         }
 
         if (ln.isEmpty()) {
             binding.lastName.error = "Lastname Required"
-            binding.lastName.requestFocus()
-            return
+            //binding.lastName.requestFocus()
         }
 
         if (mail.isEmpty()) {
             binding.email.error = "Email Required"
-            binding.email.requestFocus()
-            return
+            //binding.email.requestFocus()
         }
 
         if (pwd.isEmpty()) {
             binding.password.error = "Password Required"
-            binding.password.requestFocus()
-            return
+            //binding.password.requestFocus()
         }
 
         if (!isValidEmail(mail.toString())) {
             binding.email.error = "Enter valid Email"
-            binding.email.requestFocus()
-            return
+            //binding.email.requestFocus()
         }
 
         val user = User(fn.toString(), ln.toString(), mail.toString(), pwd.toString(), "A")
