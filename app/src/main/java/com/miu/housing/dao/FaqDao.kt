@@ -1,10 +1,6 @@
 package com.miu.housing.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
-import com.miu.housing.data.FaqData
+import androidx.room.*
 import com.miu.housing.db.Faq
 
 @Dao
@@ -15,4 +11,6 @@ interface FaqDao {
     suspend fun getAllFaqs(): List<Faq>
     @Update
     suspend fun updateFaq(faq: Faq)
+    @Delete
+    suspend fun deleteFaq(faq: Faq)
 }

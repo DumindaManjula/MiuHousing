@@ -20,7 +20,7 @@ class HousingAdapter(fragmentActivity: FragmentActivity,
             0 -> HomeFragment()
             1 -> ReservationFragment(userInfo, reservationData)
             2 -> ContactFragment()
-            3 -> FaqFragment()
+            3 -> FaqFragment(userInfo)
             else -> Fragment()
         }
     }

@@ -12,9 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.miu.housing.databinding.FragmentFaqBinding
 import com.miu.housing.db.Faq
 import com.miu.housing.db.MiuHousingDatabase
+import com.miu.housing.db.User
 import kotlinx.coroutines.launch
 
-class FaqFragment() : Fragment(){
+class FaqFragment(var user: User) : Fragment(){
     private lateinit var binding: FragmentFaqBinding
     private var dialog: AlertDialog? = null
     private var fData = emptyList<Faq>()
@@ -26,6 +27,10 @@ class FaqFragment() : Fragment(){
         var view = inflater.inflate(R.layout.fragment_faq, container, false)
         binding = FragmentFaqBinding.bind(view)
         binding.rcv.layoutManager = LinearLayoutManager(context)
+
+        if(user.isAdmin == 0 || user.isAdmin == null) {
+            binding.fab.visibility = View.INVISIBLE
+        }
 
         binding.rcv.adapter = fAdapter
         binding.fab.setOnClickListener {
@@ -44,6 +49,7 @@ class FaqFragment() : Fragment(){
             }
             dialog!!.show()
         }
+
         lifecycleScope.launch {
             context?.let {
                 fData = MiuHousingDatabase(it).getFaqDao().getAllFaqs()

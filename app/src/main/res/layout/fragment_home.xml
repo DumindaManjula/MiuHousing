@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="@string/home_housing"
-                android:textAppearance="?attr/textAppearanceHeadline4"
+                android:textAppearance="?attr/textAppearanceHeadline5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivHBanner"
                 app:layout_constraintEnd_toEndOf="parent"/>
