@@ -1,19 +1,29 @@
 package com.miu.housing
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import com.miu.housing.databinding.ActivityRoomReservationMainBinding
+import com.miu.housing.db.Building
+import com.miu.housing.db.MiuHousingDatabase
+import com.miu.housing.db.Room
+import com.miu.housing.db.User
+import kotlinx.coroutines.launch
+import java.util.*
 
-class ReserveRoomActivity : AppCompatActivity(), BuildingListAdapter.OnItemClickListener {
+@Suppress("DEPRECATION")
+class ReserveRoomActivity : BaseActivity(), BuildingListAdapter.OnItemClickListener {
     private lateinit var binding: ActivityRoomReservationMainBinding
 
     private lateinit var buildingAdapter: BuildingListAdapter
     private lateinit var roomAdapter: RoomDetailAdapter
     private lateinit var buildingRecyclerView: RecyclerView
     private lateinit var roomRecyclerView: RecyclerView
+    private lateinit var buildings : List<Building>
+    private lateinit var room:List<Room>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,52 +33,48 @@ class ReserveRoomActivity : AppCompatActivity(), BuildingListAdapter.OnItemClick
         buildingRecyclerView = findViewById(R.id.building_recycler)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         buildingRecyclerView.layoutManager = layoutManager
-        val buildings = getBuildingData()
-        buildingAdapter = BuildingListAdapter(this, buildings, this)
-        buildingRecyclerView.adapter = buildingAdapter
 
         roomRecyclerView = findViewById(R.id.room_details_recycler)
-        roomRecyclerView.layoutManager =
-            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        val rooms = getRoomData()
-        roomAdapter = RoomDetailAdapter(rooms, "HH")
-        roomRecyclerView.adapter = roomAdapter
+        roomRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+        val intent = intent
+        val tmp = intent.getSerializableExtra("userInfo")
+        var user = tmp as User
+
+        launch {
+            applicationContext?.let {
+
+                    buildings = MiuHousingDatabase(it).getBuildingDao().getAllBuildings()
+                   room = MiuHousingDatabase(it).getRoomDao().getAllRooms()
+
+                buildingAdapter = BuildingListAdapter(applicationContext, buildings, user)
+                buildingRecyclerView.adapter = buildingAdapter
+
+                roomAdapter = RoomDetailAdapter(room, "HH",user)
+                roomRecyclerView.adapter = roomAdapter
+
+            }
+        }
+
+
+
+
 
         val view_for_buildings = binding.viewallBuildings
-        val view_for_rooms = binding.viewallRooms
-
         view_for_buildings.setOnClickListener {
             val intent = Intent(this, BuildingListActivity::class.java)
+            intent.putExtra("userInfo", user)
             startActivity(intent)
         }
-//        view_for_rooms.setOnClickListener {
-//            val intent = Intent(this, RoomListActivity::class.java )
-//            startActivity(intent)
-//        }
+
 
     }
 
-    override fun onItemClick(building: BuildingDetail) {
+    override fun onItemClick(building: Building) {
         roomAdapter.filterRooms(building)
     }
-    private fun getBuildingData(): List<BuildingDetail> {
-        return listOf(
-            BuildingDetail(1, "HH", 30, R.drawable.building1),
-            BuildingDetail(2, "R-13", 20, R.drawable.building2),
-            BuildingDetail(3, "Building 105", 15, R.drawable.building3),
-        )
-    }
 
-    private fun getRoomData(): List<RoomDetail> {
-        return listOf(
-            RoomDetail(1, 101, "Standard Room", "$100", R.drawable.building1),
-            RoomDetail(1, 102, "Standard Room", "$100", R.drawable.building2),
-            RoomDetail(2, 103, "Standard Room", "$100", R.drawable.building3),
-            RoomDetail(2, 201, "Deluxe Room", "$200", R.drawable.building1),
-            RoomDetail(3, 202, "Deluxe Room", "$200", R.drawable.building2),
-            RoomDetail(3, 203, "Deluxe Room", "$200", R.drawable.building3),
-        )
-    }
+
 
 
 }
