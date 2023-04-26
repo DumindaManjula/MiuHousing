@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/building_card"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="15dp"
+    android:elevation="@dimen/cardview_default_elevation"
+    app:cardCornerRadius="10dp"
+    tools:ignore="OnClick">
+
+    <RelativeLayout
+        android:id="@+id/building_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/building_images"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/building1" />
+
+        <TextView
+            android:id="@+id/buildingName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/building_images"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="15dp"
+            android:text="Building name"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/free_rooms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/building_images"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@id/free_rooms_text"
+            android:text="25"
+            android:textColor="@color/viloet"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/free_rooms_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/building_images"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="24dp"
+            android:text="free rooms"
+            android:textColor="@color/viloet"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

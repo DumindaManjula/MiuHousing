@@ -11,4 +11,9 @@
     <color name="btn_blue">#03A9F4</color>
     <color name="gray">#B7B9BA</color>
     <color name="app_main_color">#0072CE</color>
+    <color name="green">#4CAF50</color>
+    <color name="grey">#CCC</color>
+    <color name="blue">#03A9F4</color>
+    <color name="viloet">#009688</color>
+    <color name="red">#F44336</color>
 </resources>
