@@ -68,12 +68,12 @@
     <string name="contact_ext1">ext. 4137</string>
 
     <string name="contact_housing2">Housing Department</string>
-    <string name="contact_phone2">641-233-7634</string>
-    <string name="contact_email2">dhitchins@miu.edu</string>
+    <string name="contact_phone2"><u>641-233-7634</u></string>
+    <string name="contact_email2"><u>dhitchins@miu.edu</u></string>
 
     <string name="contact_housing3">Housing Department</string>
-    <string name="contact_phone3">641-472-7000</string>
+    <string name="contact_phone3"><u>641-472-7000</u></string>
     <string name="contact_ext3">ext. 4137</string>
-    <string name="contact_email3">housing@miu.edu</string>
+    <string name="contact_email3"><u>housing@miu.edu</u></string>
 
 </resources>

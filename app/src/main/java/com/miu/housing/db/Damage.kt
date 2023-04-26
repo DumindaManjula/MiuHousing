@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity
-data class Room(var roomNumber:String?, var roomType:String?, var price:Int? , var size:Double?, var status:String?, var image: Bitmap?, var buildingId:Int? ):
+data class Damage(var itemName:String? ,var reason:String? , var condition: String?):
     Serializable {
     @PrimaryKey(autoGenerate = true)
     var id:Int = 0

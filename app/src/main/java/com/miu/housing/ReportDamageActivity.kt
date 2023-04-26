@@ -2,6 +2,7 @@ package com.miu.housing
 
 import android.R
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,9 +18,12 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.view.menu.MenuBuilder
 import com.miu.housing.databinding.ActivityMainBinding
 import com.miu.housing.databinding.ActivityReportDamageBinding
+import com.miu.housing.db.Damage
+import com.miu.housing.db.MiuHousingDatabase
 import com.miu.housing.db.User
+import kotlinx.coroutines.launch
 
-class ReportDamageActivity : AppCompatActivity() {
+class ReportDamageActivity : BaseActivity() {
 
     private lateinit var binding: ActivityReportDamageBinding
     var selectedItem: String? = null;
@@ -50,8 +54,8 @@ class ReportDamageActivity : AppCompatActivity() {
         binding.actv.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
                 selectedItem = parent.getItemAtPosition(position).toString()
-                Toast.makeText(this,"Item selected at $position is "
-                        + parent.getItemAtPosition(position), Toast.LENGTH_LONG).show()
+//                Toast.makeText(this,"Item selected at $position is "
+//                        + parent.getItemAtPosition(position), Toast.LENGTH_LONG).show()
             }
     }
 
@@ -78,7 +82,17 @@ class ReportDamageActivity : AppCompatActivity() {
             return
         }
 
-        Toast.makeText(this,"Notified damaged Item $selectedItem. MiuHousing will contact you soon ", Toast.LENGTH_LONG).show()
+        var damage = Damage(selectedItem, dmgReason.toString() , dmgCondition.toString());
+        launch {
+            applicationContext?.let {
+                var damage = MiuHousingDatabase(it).getDamageDao().addDamage(damage)
+                if(damage != null){
+                    it.toast("Notified damaged Item $selectedItem. MiuHousing will contact you soon ")
+                }else{
+                    it.toast("Failing to submit damage data")
+                }
+            }
+        }
 
         val intent = Intent(this, HousingActivity::class.java)
         intent.putExtra("user", user)

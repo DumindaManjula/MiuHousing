@@ -8,8 +8,8 @@ import com.miu.housing.dao.*
 import com.miu.housing.data.Converter
 
 @Database(
-    entities = [User::class, Building::class, Room::class, Booking::class, Faq::class],
-    version = 4
+    entities = [User::class, Building::class, Room::class, Booking::class, Faq::class, Damage::class],
+    version = 5
 )
 @TypeConverters(Converter::class)
 abstract class MiuHousingDatabase: RoomDatabase() {
@@ -23,6 +23,8 @@ abstract class MiuHousingDatabase: RoomDatabase() {
     abstract fun getBookingDao(): BookingDao
 
     abstract fun getFaqDao(): FaqDao
+
+    abstract fun getDamageDao(): DamageDao
 
     // Build RoomDB
     companion object {
