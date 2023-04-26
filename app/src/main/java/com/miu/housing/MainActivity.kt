@@ -1,5 +1,6 @@
 package com.miu.housing
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
@@ -35,7 +36,7 @@ class MainActivity : BaseActivity() {
 
         prefs = getSharedPreferences("com.mycompany.myAppName", MODE_PRIVATE);
 
-        //initializeSampleData();
+        initializeSampleData();
 
         var resultContracts =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -144,6 +145,7 @@ class MainActivity : BaseActivity() {
         return email.matches(emailRegex.toRegex())
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun initializeSampleData() {
 
         //User Account data
@@ -151,11 +153,12 @@ class MainActivity : BaseActivity() {
         val user2 = User("Mark", "Taylor", "mark@gmail.com", "123", "A")
         val user3 = User("Andrew", "Russle", "andrew@gmail.com", "123", "A")
         val user4 = User("Shane", "Watson", "shane@gmail.com", "123", "A")
+        val user5 = User("Yen", "Truong", "truthblue82@gmail.com", "1111", "A")
         val admin = User("Admin", "Admin", "housing@miu.edu", "1111", "A", 1)
 
         //Damage Items data
-        val damageItem1 = Damage("Table", "Too old", "Not usable")
-        val damageItem2 = Damage("Chair", "Not Strong one", "Not usable")
+        val damageItem1 = Damage("Table", "Too old", "Not usable", "john@gmail.com")
+        val damageItem2 = Damage("Chair", "Not Strong one", "Not usable", "andrew@gmail.com")
 
         val faq1 = Faq("How to book a room in dorm?", "Go to the MIU website, register a room with housing department.", 3)
         val faq2 = Faq("Student Housing?", "See your options for on-campus housing. Students aligible for off-campus housing can find information about renting a room or apartment in Fairfield, in addition to cost of living resource.", 1)
@@ -168,7 +171,7 @@ class MainActivity : BaseActivity() {
                 applicationContext?.let {
                     MiuHousingDatabase(it).getUserDao().deleteAll()
                     var user =
-                        MiuHousingDatabase(it).getUserDao().addMultipleUsers(user1, user2, user3, user4, admin)
+                        MiuHousingDatabase(it).getUserDao().addMultipleUsers(user1, user2, user3, user4, user5, admin)
                     if (user != null) {
                         Log.i(MY_MIU_TAG, "Inserted all users at installation.......")
                     } else {

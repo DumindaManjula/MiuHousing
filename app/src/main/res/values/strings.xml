@@ -46,6 +46,7 @@
     <string name="furniture_damage_name">Furniture name</string>
     <string name="furniture_damage_reason">Reason</string>
     <string name="furniture_damage_condition">Condition</string>
+    <string name="furniture_damage_email">Email</string>
 
     <!--Contact us-->
 

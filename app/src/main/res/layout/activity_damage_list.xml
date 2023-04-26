@@ -6,64 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".DamageListActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/headerDamage"
-        android:backgroundTint="@color/purple_500"
-        android:paddingTop="15dp"
-        android:layout_marginStart="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="horizontal">
-        <TextView
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="10dp"
-            android:paddingStart="10dp"
-            android:text="@string/furniture_damage_name"
-            android:textColor="@color/white"
-            android:textAppearance="?textAppearanceHeadline6"
-            android:layout_gravity="left"
-            android:background="@color/purple_500"
-            android:layout_height="45dp"
-            android:layout_width="100dp"/>
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="45dp"
-            android:background="@color/purple_500"
-            android:textColor="@color/white"
-            android:textAppearance="?textAppearanceHeadline6"
-            android:text="@string/furniture_damage_reason"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="10dp"
-            android:layout_gravity="left"/>
-
-        <TextView
-            android:layout_height="45dp"
-            android:layout_width="100dp"
-            android:text="@string/furniture_damage_condition"
-            android:background="@color/purple_500"
-            android:textColor="@color/white"
-            android:textAppearance="?textAppearanceHeadline6"
-            android:paddingBottom="10dp"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="10dp"
-            android:layout_gravity="left"/>
-
-    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerDamage"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView

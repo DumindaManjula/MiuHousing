@@ -82,7 +82,7 @@ class ReportDamageActivity : BaseActivity() {
             return
         }
 
-        var damage = Damage(selectedItem, dmgReason.toString() , dmgCondition.toString());
+        var damage = Damage(selectedItem, dmgReason.toString() , dmgCondition.toString(), user?.emailId ?:"");
         launch {
             applicationContext?.let {
                 var damage = MiuHousingDatabase(it).getDamageDao().addDamage(damage)
