@@ -5,8 +5,6 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.RecyclerView
 import com.miu.housing.data.ReservationData
 import com.miu.housing.databinding.ReservationViewBinding
@@ -47,7 +45,7 @@ class ReservationAdapter(var user: User, var list: ArrayList<ReservationData>): 
                     it.context.startActivity(intent)
                 }
                 4 -> {
-                    val intent = Intent(it.context, ComplaintActivity::class.java)
+                    val intent = Intent(it.context, ComplainActivity::class.java)
                     intent.putExtra("userInfo", user)
                     it.context.startActivity(intent)
                 }
@@ -69,7 +67,7 @@ class ReservationAdapter(var user: User, var list: ArrayList<ReservationData>): 
                                 it.context.startActivity(intent)
                             }
                             7 -> {
-                                val intent = Intent(it.context, ComplaintListActivity::class.java)
+                                val intent = Intent(it.context, ComplainListActivity::class.java)
                                 intent.putExtra("userInfo", user)
                                 it.context.startActivity(intent)
                             }

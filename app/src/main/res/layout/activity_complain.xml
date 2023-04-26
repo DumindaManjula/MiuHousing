@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ComplaintActivity">
+    tools:context=".ComplainActivity">
 
 
 
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:onClick="submitComplaint"
+                android:onClick="submitComplain"
                 android:text="Submit"
                 android:backgroundTint="@color/app_main_color"
                 android:textAllCaps="false"
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
-                android:onClick="cancelComplaint"
+                android:onClick="cancelComplain"
                 android:text="Cancel"
                 android:backgroundTint="@color/app_main_color"
                 app:layout_constraintEnd_toEndOf="parent"

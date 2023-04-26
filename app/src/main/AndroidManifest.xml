@@ -12,6 +12,12 @@
         android:theme="@style/Theme.MiuHousing"
         tools:targetApi="31">
         <activity
+            android:name=".ComplainListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DamageListActivity"
+            android:exported="false" />
+        <activity
             android:name=".RoomActivity"
             android:exported="false" />
         <activity
@@ -27,7 +33,7 @@
             android:name=".ReserveRoomActivity"
             android:exported="false" />
         <activity
-            android:name=".ComplaintActivity"
+            android:name=".ComplainActivity"
             android:exported="false" />
         <activity
             android:name=".RequestingLetterActivity"

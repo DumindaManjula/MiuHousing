@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Complaint(var content:String?, var email: String?):java.io.Serializable {
+data class Complain(var content:String?, var email: String?):java.io.Serializable {
     @PrimaryKey(autoGenerate = true)
     var id:Int = 0
 }

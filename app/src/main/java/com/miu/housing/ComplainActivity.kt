@@ -2,7 +2,6 @@ package com.miu.housing
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -10,20 +9,19 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.view.menu.MenuBuilder
-import com.miu.housing.databinding.ActivityComplaintBinding
-import com.miu.housing.databinding.ActivityReportDamageBinding
-import com.miu.housing.db.Complaint
+import com.miu.housing.databinding.ActivityComplainBinding
+import com.miu.housing.db.Complain
 import com.miu.housing.db.MiuHousingDatabase
 import com.miu.housing.db.User
 import kotlinx.coroutines.launch
 
-class ComplaintActivity : BaseActivity() {
-    private lateinit var binding: ActivityComplaintBinding
+class ComplainActivity : BaseActivity() {
+    private lateinit var binding: ActivityComplainBinding
     var user: User? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityComplaintBinding.inflate(layoutInflater)
+        binding = ActivityComplainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val intent = intent
@@ -38,7 +36,7 @@ class ComplaintActivity : BaseActivity() {
             showCustomActionBar(actionBar, layoutInflater, leftText, rightText)
         }
     }
-    fun submitComplaint(view: View){
+    fun submitComplain(view: View){
         val dmgReason = binding.editTextReason.text
 
         if (dmgReason.isBlank()) {
@@ -53,11 +51,11 @@ class ComplaintActivity : BaseActivity() {
         intent.putExtra("user", user)
         startActivity(intent)
 
-        var complaint = Complaint(dmgReason.toString(), user?.emailId)
+        var complain = Complain(dmgReason.toString(), user?.emailId)
         launch {
             applicationContext?.let {
-                var complaint = MiuHousingDatabase(it).getComplaintDao().addComplaint(complaint)
-                if(complaint == null) {
+                var complain = MiuHousingDatabase(it).getComplainDao().addComplain(complain)
+                if(complain == null) {
                     it.toast("There is something wrong")
                 } else {
                     it.toast("Your complaint is keep in our system.")
@@ -65,7 +63,7 @@ class ComplaintActivity : BaseActivity() {
             }
         }
     }
-    fun cancelComplaint(view: View){
+    fun cancelComplain(view: View){
         val intent = Intent(this, HousingActivity::class.java)
         intent.putExtra("user", user)
         startActivity(intent)

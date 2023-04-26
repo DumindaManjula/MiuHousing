@@ -5,18 +5,18 @@ import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.miu.housing.databinding.ActivityComplaintListBinding
-import com.miu.housing.db.Complaint
+import com.miu.housing.databinding.ActivityComplainListBinding
+import com.miu.housing.db.Complain
 import com.miu.housing.db.MiuHousingDatabase
 import com.miu.housing.db.User
 import kotlinx.coroutines.launch
 
-class ComplaintListActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityComplaintListBinding
-    private var complaintList:List<Complaint> = emptyList()
+class ComplainListActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityComplainListBinding
+    private var complainList:List<Complain> = emptyList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityComplaintListBinding.inflate(layoutInflater)
+        binding = ActivityComplainListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val intent = intent
@@ -31,15 +31,15 @@ class ComplaintListActivity : AppCompatActivity() {
             showCustomActionBar(actionBar, layoutInflater, leftText, rightText)
         }
 
-        var complaintListAdapter = ComplaintListAdapter(complaintList)
+        var complaintListAdapter = ComplainListAdapter(complainList)
         binding.rcv.layoutManager = LinearLayoutManager(baseContext)
         binding.rcv.adapter = complaintListAdapter
 
         lifecycleScope.launch{
             baseContext.let{
-                complaintList = MiuHousingDatabase(it).getComplaintDao().getAllComplaint()
-                if(complaintList.size > 0) {
-                    complaintListAdapter.list = complaintList
+                complainList = MiuHousingDatabase(it).getComplainDao().getAllComplain()
+                if(complainList.size > 0) {
+                    complaintListAdapter.list = complainList
                     complaintListAdapter.notifyDataSetChanged()
                 }
             }
