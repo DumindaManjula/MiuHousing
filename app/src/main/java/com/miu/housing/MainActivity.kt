@@ -175,6 +175,7 @@ class MainActivity : BaseActivity() {
                     MiuHousingDatabase(it).getDamageDao().deleteAllDamage()
                     MiuHousingDatabase(it).getRoomDao().deleteAllRoom()
                     MiuHousingDatabase(it).getUserDao().deleteAllUser()
+                    MiuHousingDatabase(it).getFaqDao().deleteAllFAQ()
 
                     var user =
                         MiuHousingDatabase(it).getUserDao().addMultipleUsers(user1, user2, user3, user4, user5, admin)
@@ -192,7 +193,6 @@ class MainActivity : BaseActivity() {
                         Log.i(MY_MIU_TAG, "Failing to save damage item during intialization")
                     }
 
-                    MiuHousingDatabase(it).getFaqDao().deleteAll()
                     var faq = MiuHousingDatabase(it).getFaqDao().addMultipleFaqs(faq1,faq2,faq3,faq4,faq5)
                     if(faq != null) {
                         Log.i(MY_MIU_TAG, "Inserted all faqs at installation...")

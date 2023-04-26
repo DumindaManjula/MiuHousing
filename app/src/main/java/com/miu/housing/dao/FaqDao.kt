@@ -17,5 +17,5 @@ interface FaqDao {
     @Delete
     suspend fun deleteFaq(faq: Faq)
     @Query("Delete from faq")
-    suspend fun deleteAll()
+    suspend fun deleteAllFAQ()
 }
