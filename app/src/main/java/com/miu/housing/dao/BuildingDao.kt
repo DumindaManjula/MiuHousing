@@ -8,7 +8,7 @@ import com.miu.housing.db.Room
 @Dao
 interface BuildingDao {
 
-    @Query("SELECT * FROM BUILDING ORDER BY buildingNumber DESC")
+    @Query("SELECT * FROM BUILDING ORDER BY id DESC")
     suspend fun getAllBuildings():List<Building>
 
 }
