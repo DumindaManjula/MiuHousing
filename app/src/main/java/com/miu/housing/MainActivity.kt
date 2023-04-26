@@ -149,12 +149,12 @@ class MainActivity : BaseActivity() {
     private fun initializeSampleData() {
 
         //User Account data
-        val user1 = User("John", "Wick", "john@gmail.com", "123", "A")
-        val user2 = User("Mark", "Taylor", "mark@gmail.com", "123", "A")
-        val user3 = User("Andrew", "Russle", "andrew@gmail.com", "123", "A")
-        val user4 = User("Shane", "Watson", "shane@gmail.com", "123", "A")
-        val user5 = User("Yen", "Truong", "truthblue82@gmail.com", "1111", "A")
-        val admin = User("Admin", "Admin", "housing@miu.edu", "1111", "A", 1)
+        val user1 = User("John", "Wick", "john@gmail.com", "123", "A", "613479", 1)
+        val user2 = User("Mark", "Taylor", "mark@gmail.com", "123", "A", "613479", 1)
+        val user3 = User("Andrew", "Russle", "andrew@gmail.com", "123", "A", "613479", 1)
+        val user4 = User("Shane", "Watson", "shane@gmail.com", "123", "A", "613479", 1)
+        val user5 = User("Yen", "Truong", "truthblue82@gmail.com", "1111", "A", "613479",1)
+        val admin = User("Admin", "Admin", "housing@miu.edu", "1111", "A", "613479",1)
 
         //Damage Items data
         val damageItem1 = Damage("Table", "Too old", "Not usable", "john@gmail.com")
