@@ -183,7 +183,7 @@ class MainActivity : BaseActivity() {
                     } else {
                         Log.i(MY_MIU_TAG, "Failing to save user data during intialization")
                     }
-                    
+
                     var damage = MiuHousingDatabase(it).getDamageDao()
                         .addMultipleDamages(damageItem1, damageItem2)
                     if (damage != null) {
