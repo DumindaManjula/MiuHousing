@@ -23,6 +23,7 @@ class ReservationFragment(user: User, rData: ArrayList<ReservationData>) : Fragm
         savedInstanceState: Bundle?
     ): View? {
         var view = inflater.inflate(R.layout.fragment_reservation, container, false)
+
         binding = FragmentReservationBinding.bind(view)
         binding.rcv.layoutManager = GridLayoutManager(context, 2)
         binding.rcv.adapter = ReservationAdapter(userInfo, reservationData)

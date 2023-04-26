@@ -12,6 +12,10 @@ interface BookingDao {
     @Insert
     suspend fun addBooking(booking:Booking)
 
+    @Query("Delete from Booking")
+    suspend fun deleteAllBooking()
+
+
     @Query("SELECT * FROM BOOKING WHERE userId=:id")
     suspend fun getBooking(id:Int):Booking
 

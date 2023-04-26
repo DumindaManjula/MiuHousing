@@ -64,7 +64,6 @@ class ReservationAdapter(var user: User, var list: ArrayList<ReservationData>): 
 
                 }
                 2 -> {
-
                     val intent = Intent(it.context, RequestingLetterActivity::class.java)
                     intent.putExtra("userInfo", user)
                     it.context.startActivity(intent)
@@ -75,7 +74,7 @@ class ReservationAdapter(var user: User, var list: ArrayList<ReservationData>): 
                     it.context.startActivity(intent)
                 }
                 4 -> {
-                    val intent = Intent(it.context, ComplaintActivity::class.java)
+                    val intent = Intent(it.context, ComplainActivity::class.java)
                     intent.putExtra("userInfo", user)
                     it.context.startActivity(intent)
                 }
@@ -86,6 +85,22 @@ class ReservationAdapter(var user: User, var list: ArrayList<ReservationData>): 
                         Toast.makeText(binding.root.context, "Device does not allow phone call", Toast.LENGTH_LONG).show()
                     } else {
                         it.context.startActivity(intent)
+                    }
+                }
+                else -> {
+                    if(user.isAdmin == 1) {
+                        when(position) {
+                            6 -> {
+                                val intent = Intent(it.context, DamageListActivity::class.java)
+                                intent.putExtra("userInfo", user)
+                                it.context.startActivity(intent)
+                            }
+                            7 -> {
+                                val intent = Intent(it.context, ComplainListActivity::class.java)
+                                intent.putExtra("userInfo", user)
+                                it.context.startActivity(intent)
+                            }
+                        }
                     }
                 }
             }

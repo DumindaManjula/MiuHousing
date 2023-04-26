@@ -10,12 +10,7 @@
     <string name="home_housing_desc">One of the University’s primary missions is to provide a great residential experience for students while cultivating academic achievement and personal growth.</string>
     <string name="home_housing_oncampus">On-Campus Housing</string>
     <string name="home_housing_oncampus_desc">Every student residence is designed to provide a comfortable environment for study and rest. Individual rooms have Internet connections as well as air conditioning. Each residence hall provides washer/dryer service and filtered drinking water, and many have exercise and recreation rooms.
-        \n<b>From 9:30 p.m. to 9:30 a.m. every day</b>, students are expected to respect their fellow residents by honoring quiet times and thus being considerate of activities that could disturb others in the residence halls, such as talking loudly or playing loud music, games, and videos in private rooms or in common spaces. At all times, students are expected to be respectful of others who may be studying or meditating, especially during afternoon and evening hours.
-    \nTo ensure that students may comfortably maintain a good daily routine, visitors are asked to leave the residence halls by 9:30 p.m. in the evening. Guests should not enter the buildings before 9:30 a.m. Note: Visiting hours and specific areas for guests of the opposite gender are posted in each residence hall. Residence Halls have a Resident Director (RD) and one or more Resident Advisors (RA) who help new students become familiar with campus life and is skilled in assisting with questions and concerns.
-    \n<b>Vastu Housing:</b> Aside from our traditional residence halls, students also have the opportunity to live in Maharishi Sthāpatya Veda housing designed in accordance with Natural Law. Sometimes called Vāstu housing, these structures incorporate ancient principles of Vedic architecture intended to enhance the health, happiness, and good fortune of their residents. These unique residence halls offer a living room, kitchen area, and a washer and dryer — all shared by eight residents — and a private bathroom for each student. These rooms cost an additional $900 per semester beyond the regular room charges, and at times there is a waiting list.
-    \n<b>Please note:</b> The University reserves the right to use any residence hall during vacation or other special occasions upon reasonable notice to the occupants and without reduction in annual rental or other obligations to the occupants. You may be asked to move your belongings out of your room during Winter breaks. The University also reserves the right to change room assignments during the school year under special circumstances.
-    \n<b>Single Rooms:</b> We usually provide single rooms. At times, however, it may be necessary for the Housing Office to make adjustments in room occupancy to accommodate changing University needs.
-    \n<b>Student Property Insurance:</b> Please note that the personal property of students is not the responsibility of the University. We suggest that students obtain property insurance if they do not already have property insurance.</string>
+    </string>
     <string name="home_security">Campus Security</string>
     <string name="home_security_desc">In the event of an emergency, call Campus Security: ext. 1115, or 641-472-1115</string>
     <string name="home_dining">Meal Times in the Annapurna Dining Hall</string>
@@ -41,6 +36,12 @@
     <string name="report_damage_title">Report damage</string>
     <string name="complain_title">Make complain</string>
     <string name="emergency_title">Make emergency</string>
+    <string name="admin_view_damage">View damage list</string>
+    <string name="admin_view_complain">View complain list</string>
+    <string name="furniture_damage_name">Furniture name</string>
+    <string name="furniture_damage_reason">Reason</string>
+    <string name="furniture_damage_condition">Condition</string>
+    <string name="furniture_damage_email">Email</string>
 
     <!--Contact us-->
 

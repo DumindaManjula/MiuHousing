@@ -2,7 +2,6 @@ package com.miu.housing
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -10,17 +9,19 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.view.menu.MenuBuilder
-import com.miu.housing.databinding.ActivityComplaintBinding
-import com.miu.housing.databinding.ActivityReportDamageBinding
+import com.miu.housing.databinding.ActivityComplainBinding
+import com.miu.housing.db.Complain
+import com.miu.housing.db.MiuHousingDatabase
 import com.miu.housing.db.User
+import kotlinx.coroutines.launch
 
-class ComplaintActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityComplaintBinding
+class ComplainActivity : BaseActivity() {
+    private lateinit var binding: ActivityComplainBinding
     var user: User? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityComplaintBinding.inflate(layoutInflater)
+        binding = ActivityComplainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val intent = intent
@@ -28,7 +29,7 @@ class ComplaintActivity : AppCompatActivity() {
         user = tmp as User
 
         var rightText = "${user?.firstName} ${user?.lastName}"
-        var leftText = getString(com.miu.housing.R.string.app_name) + " - Make Complain"
+        var leftText = getString(com.miu.housing.R.string.app_name) + " - Make Complaint"
 
         val actionBar: ActionBar? = supportActionBar
         if(actionBar != null) {
@@ -39,7 +40,7 @@ class ComplaintActivity : AppCompatActivity() {
         val dmgReason = binding.editTextReason.text
 
         if (dmgReason.isBlank()) {
-            binding.editTextReason.error = "Reason required"
+            binding.editTextReason.error = "Reason is required"
             binding.editTextReason.requestFocus()
             return
         }
@@ -50,9 +51,19 @@ class ComplaintActivity : AppCompatActivity() {
         intent.putExtra("user", user)
         startActivity(intent)
 
+        var complain = Complain(dmgReason.toString(), user?.emailId)
+        launch {
+            applicationContext?.let {
+                var complain = MiuHousingDatabase(it).getComplainDao().addComplain(complain)
+                if(complain == null) {
+                    it.toast("There is something wrong")
+                } else {
+                    it.toast("Your complaint is keep in our system.")
+                }
+            }
+        }
     }
     fun cancelComplain(view: View){
-
         val intent = Intent(this, HousingActivity::class.java)
         intent.putExtra("user", user)
         startActivity(intent)
@@ -68,16 +79,16 @@ class ComplaintActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when(item.itemId) {
-//            com.miu.housing.R.id.gmail -> {
-//                Toast.makeText(this, item.title.toString(), Toast.LENGTH_SHORT).show()
-//            }
-//            com.miu.housing.R.id.logout -> {
-//                val intent = Intent(this, MainActivity::class.java)
-//                startActivity(intent)
-//                //Toast.makeText(this, "Test test", Toast.LENGTH_SHORT).show()
-//            }
-//        }
+        when(item.itemId) {
+            com.miu.housing.R.id.gmail -> {
+                Toast.makeText(this, item.title.toString(), Toast.LENGTH_SHORT).show()
+            }
+            com.miu.housing.R.id.logout -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                //Toast.makeText(this, "Test test", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         return super.onOptionsItemSelected(item)
     }

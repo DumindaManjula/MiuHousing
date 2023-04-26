@@ -50,14 +50,14 @@ class RequestingLetterActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-//            R.id.gmail -> {
-//                Toast.makeText(this, item.title.toString(), Toast.LENGTH_SHORT).show()
-//            }
-//            R.id.logout -> {
-//                val intent = Intent(this, MainActivity::class.java)
-//                startActivity(intent)
-//                //Toast.makeText(this, "Test test", Toast.LENGTH_SHORT).show()
-//            }
+            R.id.gmail -> {
+                Toast.makeText(this, item.title.toString(), Toast.LENGTH_SHORT).show()
+            }
+            R.id.logout -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                //Toast.makeText(this, "Test test", Toast.LENGTH_SHORT).show()
+            }
         }
 
         return super.onOptionsItemSelected(item)

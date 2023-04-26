@@ -13,6 +13,9 @@ interface RoomDao {
     @Query("SELECT * FROM ROOM WHERE status = 1 ORDER BY id DESC")
     suspend fun getAllRooms():List<Room>
 
+    @Query("Delete from Room")
+    suspend fun deleteAllRoom()
+
     @Insert
     suspend fun addMultipleRoom(vararg room: Room)
 

@@ -39,7 +39,11 @@ class HousingActivity : AppCompatActivity() {
         val intent = intent
         val tmp = intent.getSerializableExtra("user")
         val user = tmp as User
-        var rightText = "Welcome ${user.firstName} ${user.lastName}"
+        if(user.isAdmin == 1) {
+            reservationData.add(ReservationData(getString(R.string.admin_view_damage), R.drawable.broken))
+            reservationData.add(ReservationData(getString(R.string.admin_view_complain), R.drawable.complain2))
+        }
+        var rightText = "${user.firstName} ${user.lastName}"
         var leftText = getString(R.string.app_name)
 
         val actionBar: ActionBar? = supportActionBar
@@ -83,13 +87,13 @@ class HousingActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-//            R.id.gmail -> {
-//                Toast.makeText(this, item.title.toString(), Toast.LENGTH_SHORT).show()
-//            }
-//            R.id.logout -> {
-//                val intent = Intent(this, MainActivity::class.java)
-//                startActivity(intent)
-//            }
+            R.id.gmail -> {
+                Toast.makeText(this, item.title.toString(), Toast.LENGTH_SHORT).show()
+            }
+            R.id.logout -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         return super.onOptionsItemSelected(item)

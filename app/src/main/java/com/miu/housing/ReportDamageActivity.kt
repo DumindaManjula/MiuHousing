@@ -82,7 +82,7 @@ class ReportDamageActivity : BaseActivity() {
             return
         }
 
-        var damage = Damage(selectedItem, dmgReason.toString() , dmgCondition.toString());
+        var damage = Damage(selectedItem, dmgReason.toString() , dmgCondition.toString(), user?.emailId ?:"");
         launch {
             applicationContext?.let {
                 var damage = MiuHousingDatabase(it).getDamageDao().addDamage(damage)
@@ -117,14 +117,14 @@ class ReportDamageActivity : BaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-//            com.miu.housing.R.id.gmail -> {
-//                Toast.makeText(this, item.title.toString(), Toast.LENGTH_SHORT).show()
-//            }
-//            com.miu.housing.R.id.logout -> {
-//                val intent = Intent(this, MainActivity::class.java)
-//                startActivity(intent)
-//                //Toast.makeText(this, "Test test", Toast.LENGTH_SHORT).show()
-//            }
+            com.miu.housing.R.id.gmail -> {
+                Toast.makeText(this, item.title.toString(), Toast.LENGTH_SHORT).show()
+            }
+            com.miu.housing.R.id.logout -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                //Toast.makeText(this, "Test test", Toast.LENGTH_SHORT).show()
+            }
         }
 
         return super.onOptionsItemSelected(item)
