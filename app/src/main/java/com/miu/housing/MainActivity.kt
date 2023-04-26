@@ -1,5 +1,6 @@
 package com.miu.housing
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
@@ -143,6 +144,7 @@ class MainActivity : BaseActivity() {
         return email.matches(emailRegex.toRegex())
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun initializeSampleData() {
 
         //User Account data
