@@ -9,7 +9,7 @@ import com.miu.housing.data.Converter
 
 @Database(
     entities = [User::class, Building::class, Room::class, Booking::class, Faq::class, Damage::class],
-    version = 6
+    version = 7
 )
 @TypeConverters(Converter::class)
 abstract class MiuHousingDatabase: RoomDatabase() {

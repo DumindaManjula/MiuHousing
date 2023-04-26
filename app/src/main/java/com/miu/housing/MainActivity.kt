@@ -160,6 +160,13 @@ class MainActivity : BaseActivity() {
 //        if (prefs!!.getBoolean("firstrun",true)) {
             launch {
                 applicationContext?.let {
+
+                    MiuHousingDatabase(it).getBookingDao().deleteAllBooking()
+                    MiuHousingDatabase(it).getBuildingDao().deleteAllBuilding()
+                    MiuHousingDatabase(it).getDamageDao().deleteAllDamage()
+                    MiuHousingDatabase(it).getRoomDao().deleteAllRoom()
+                    MiuHousingDatabase(it).getUserDao().deleteAllUser()
+
                     var user =
                         MiuHousingDatabase(it).getUserDao().addMultipleUsers(user1, user2, user3, user4)
                     if (user != null) {

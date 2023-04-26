@@ -19,4 +19,7 @@ interface DamageDao {
     @Insert
     suspend fun addMultipleDamages(vararg damage: Damage)
 
+    @Query("Delete from Damage")
+    suspend fun deleteAllDamage()
+
 }
