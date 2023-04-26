@@ -151,7 +151,7 @@ class MainActivity : BaseActivity() {
         val user2 = User("Mark", "Taylor", "mark@gmail.com", "123", "A")
         val user3 = User("Andrew", "Russle", "andrew@gmail.com", "123", "A")
         val user4 = User("Shane", "Watson", "shane@gmail.com", "123", "A")
-        val admin = User("Admin", "Admin", "thi.truong@miu.edu", "1111", "A", 1)
+        val admin = User("Admin", "Admin", "housing@miu.edu", "1111", "A", 1)
 
         //Damage Items data
         val damageItem1 = Damage("Table", "Too old", "Not usable")

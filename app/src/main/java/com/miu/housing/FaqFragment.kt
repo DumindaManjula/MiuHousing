@@ -29,6 +29,7 @@ class FaqFragment(var user: User) : Fragment(){
         binding = FragmentFaqBinding.bind(view)
         binding.rcv.layoutManager = LinearLayoutManager(context)
 
+        //check logged in user is admin and show FAB button to add new FAQ
         if(user.isAdmin == 0 || user.isAdmin == null) {
             binding.fab.visibility = View.INVISIBLE
         }
