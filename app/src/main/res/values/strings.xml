@@ -41,6 +41,11 @@
     <string name="report_damage_title">Report damage</string>
     <string name="complain_title">Make complain</string>
     <string name="emergency_title">Make emergency</string>
+    <string name="admin_view_damage">View damage list</string>
+    <string name="admin_view_complain">View complain list</string>
+    <string name="furniture_damage_name">Furniture name</string>
+    <string name="furniture_damage_reason">Reason</string>
+    <string name="furniture_damage_condition">Condition</string>
 
     <!--Contact us-->
 

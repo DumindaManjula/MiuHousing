@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DamageListActivity">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tbDining"
+        android:backgroundTint="@color/purple_500"
+        android:paddingTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:stretchColumns="*">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/VDivider" />
+        </LinearLayout>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/purple_200">
+            <TextView
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:text="@string/furniture_damage_name"
+                android:textAppearance="?textAppearanceHeadline6"
+                android:layout_gravity="left" />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider" />
+            </LinearLayout>
+            <TextView
+                android:text="@string/furniture_damage_reason"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:layout_gravity="left"/>
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="match_parent" >
+                <View style="@style/Divider" />
+            </LinearLayout>
+            <TextView
+                android:text="@string/furniture_damage_condition"
+                android:paddingBottom="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="10dp"
+                android:layout_gravity="left"/>
+        </TableRow>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp" >
+            <View style="@style/VDivider" />
+        </LinearLayout>
+    </TableLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

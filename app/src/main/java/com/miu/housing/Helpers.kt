@@ -35,3 +35,11 @@ fun Context.showCustomActionBar(actionBar: ActionBar,
         var aview = viewActionBar.findViewById<TextView>(R.id.apptitle)
         aview.setText(leftText)
 }
+
+fun Context.updateLeftOfActionBar(
+                                  layoutInflater: LayoutInflater,
+                                  leftText: String){
+        var viewActionBar = layoutInflater.inflate(R.layout.general_top_header,null)
+        var aview = viewActionBar.findViewById<TextView>(R.id.apptitle)
+        aview.setText(leftText)
+}

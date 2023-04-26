@@ -9,6 +9,7 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import com.miu.housing.databinding.ActivityMainBinding
 import com.miu.housing.db.Damage
+import com.miu.housing.db.Faq
 import com.miu.housing.db.MiuHousingDatabase
 import com.miu.housing.db.User
 import kotlinx.coroutines.launch
@@ -34,7 +35,7 @@ class MainActivity : BaseActivity() {
 
         prefs = getSharedPreferences("com.mycompany.myAppName", MODE_PRIVATE);
 
-        initializeSampleData();
+        //initializeSampleData();
 
         var resultContracts =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -150,29 +151,45 @@ class MainActivity : BaseActivity() {
         val user2 = User("Mark", "Taylor", "mark@gmail.com", "123", "A")
         val user3 = User("Andrew", "Russle", "andrew@gmail.com", "123", "A")
         val user4 = User("Shane", "Watson", "shane@gmail.com", "123", "A")
-
+        val admin = User("Admin", "Admin", "thi.truong@miu.edu", "1111", "A", 1)
 
         //Damage Items data
         val damageItem1 = Damage("Table", "Too old", "Not usable")
         val damageItem2 = Damage("Chair", "Not Strong one", "Not usable")
 
+        val faq1 = Faq("How to book a room in dorm?", "Go to the MIU website, register a room with housing department.", 3)
+        val faq2 = Faq("Student Housing?", "See your options for on-campus housing. Students aligible for off-campus housing can find information about renting a room or apartment in Fairfield, in addition to cost of living resource.", 1)
+        val faq3 = Faq("Driving Instructions to Campus Buildings?", "Where to go when you first arrive on campus.", 2)
+        val faq4 = Faq("After-hours/late move-in date policies?", "nternational students arriving late may call Campus Security at 641-472-1115", 3)
+        val faq5 = Faq("10 things to know before you arrive?", "Climate and clothing, what to bring and not to bring, on-campus telephone / Cable TV / Internet services, insurance, shipping belongings in advance, lodging in Fairfield, and more.", 2)
+
 //        if (prefs!!.getBoolean("firstrun",true)) {
             launch {
                 applicationContext?.let {
+                    MiuHousingDatabase(it).getUserDao().deleteAll()
                     var user =
-                        MiuHousingDatabase(it).getUserDao().addMultipleUsers(user1, user2, user3, user4)
+                        MiuHousingDatabase(it).getUserDao().addMultipleUsers(user1, user2, user3, user4, admin)
                     if (user != null) {
                         Log.i(MY_MIU_TAG, "Inserted all users at installation.......")
                     } else {
                         Log.i(MY_MIU_TAG, "Failing to save user data during intialization")
                     }
 
+                    MiuHousingDatabase(it).getDamageDao().deleteAll()
                     var damage = MiuHousingDatabase(it).getDamageDao()
                         .addMultipleDamages(damageItem1, damageItem2)
                     if (damage != null) {
                         Log.i(MY_MIU_TAG, "Inserted all damages at installation.......")
                     } else {
                         Log.i(MY_MIU_TAG, "Failing to save damage item during intialization")
+                    }
+
+                    MiuHousingDatabase(it).getFaqDao().deleteAll()
+                    var faq = MiuHousingDatabase(it).getFaqDao().addMultipleFaqs(faq1,faq2,faq3,faq4,faq5)
+                    if(faq != null) {
+                        Log.i(MY_MIU_TAG, "Inserted all faqs at installation...")
+                    } else {
+                        Log.i(MY_MIU_TAG, "Failing to save faq item during installation")
                     }
                 }
             }

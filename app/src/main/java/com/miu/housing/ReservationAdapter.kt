@@ -57,6 +57,22 @@ class ReservationAdapter(var user: User, var list: ArrayList<ReservationData>): 
                         it.context.startActivity(intent)
                     }
                 }
+                else -> {
+                    if(user.isAdmin == 1) {
+                        when(position) {
+                            6 -> {
+                                val intent = Intent(it.context, DamageListActivity::class.java)
+                                intent.putExtra("userInfo", user)
+                                it.context.startActivity(intent)
+                            }
+                            7 -> {
+                                val intent = Intent(it.context, ComplaintListActivity::class.java)
+                                intent.putExtra("userInfo", user)
+                                it.context.startActivity(intent)
+                            }
+                        }
+                    }
+                }
             }
         }
     }
