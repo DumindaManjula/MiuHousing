@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/room_details"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/room_card"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+      android:layout_marginTop="8dp"
+        android:layout_marginLeft="18dp"
+        app:cardCornerRadius="8dp"
+        android:elevation="@dimen/cardview_default_elevation">
+
+        <ImageView
+            android:id="@+id/room_images"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/room_number_static"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="1dp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@id/room_card"/>
+    <TextView
+        android:id="@+id/room_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="214"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="1dp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@id/room_number_static"/>
+    <TextView
+        android:id="@+id/single_shared"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Single"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@id/room_number"
+        android:layout_toRightOf="@id/room_card"/>
+
+
+    <TextView
+        android:id="@+id/pricetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/single_shared"
+       android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+
+        android:layout_toLeftOf="@id/room_price"
+        android:text="Price: "
+        android:textColor="@color/viloet"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/room_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/single_shared"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:text="$45"
+        android:textColor="@color/viloet"
+        android:textSize="15dp"
+        android:textStyle="bold"/>
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@color/grey"
+        android:layout_below="@+id/room_card" />
+
+
+
+</RelativeLayout>

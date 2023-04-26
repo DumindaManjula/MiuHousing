@@ -28,35 +28,47 @@ class CreateAccountActivity : BaseActivity() {
 
         var fn = binding.firstName.text
         var ln = binding.lastName.text
+        var si = binding.studentId.text
         var mail = binding.email.text
         var pwd = binding.password.text
 
         if (fn.isEmpty()) {
             binding.firstName.error = "Firstname Required"
-            //binding.firstName.requestFocus()
+            binding.firstName.requestFocus()
+            return
         }
 
         if (ln.isEmpty()) {
             binding.lastName.error = "Lastname Required"
-            //binding.lastName.requestFocus()
+            binding.lastName.requestFocus()
+            return
+        }
+
+        if (si.isEmpty()) {
+            binding.studentId.error = "Student Id Required"
+            binding.studentId.requestFocus()
+            return
         }
 
         if (mail.isEmpty()) {
             binding.email.error = "Email Required"
-            //binding.email.requestFocus()
+            binding.email.requestFocus()
+            return
         }
 
         if (pwd.isEmpty()) {
             binding.password.error = "Password Required"
-            //binding.password.requestFocus()
+            binding.password.requestFocus()
+            return
         }
 
         if (!isValidEmail(mail.toString())) {
             binding.email.error = "Enter valid Email"
-            //binding.email.requestFocus()
+            binding.email.requestFocus()
+            return
         }
 
-        val user = User(fn.toString(), ln.toString(), mail.toString(), pwd.toString(), "A")
+        val user = User(fn.toString(), ln.toString(), mail.toString(), pwd.toString(), "A",si.toString())
 
         launch {
             applicationContext?.let {

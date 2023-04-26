@@ -31,7 +31,10 @@ class ReservationAdapter(var user: User, var list: ArrayList<ReservationData>): 
         holder.itemView.setOnClickListener {
             Toast.makeText(binding.root.context, "${rData[position].title}", Toast.LENGTH_SHORT).show()
             when(position) {
-                0 -> {}
+                0 -> {
+                    val intent = Intent(it.context, ReserveRoomActivity::class.java)
+                    it.context.startActivity(intent)
+                }
                 1 -> {}
                 2 -> {
                     val intent = Intent(it.context, RequestingLetterActivity::class.java)

@@ -22,4 +22,9 @@
     <color name="info_body">#3C9CEA</color>
     <color name="success_header">#2e7d32</color>
     <color name="success_body">#4caf50</color>
+    <color name="green">#4CAF50</color>
+    <color name="grey">#CCC</color>
+    <color name="blue">#03A9F4</color>
+    <color name="viloet">#009688</color>
+    <color name="red">#F44336</color>
 </resources>
