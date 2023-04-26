@@ -39,23 +39,13 @@ class ReportDamageActivity : BaseActivity() {
         val tmp = intent.getSerializableExtra("userInfo")
         user = tmp as User
 
-        var fullname = "${user?.firstName} ${user?.lastName}"
-        val actionBar = supportActionBar
-        actionBar?.setDisplayShowTitleEnabled(false)
-        actionBar?.setDisplayShowCustomEnabled(true)
-        actionBar?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
-        var params = ActionBar.LayoutParams(
-            ActionBar.LayoutParams.MATCH_PARENT,
-            ActionBar.LayoutParams.MATCH_PARENT,
-            Gravity.RIGHT
-        )
-        var viewActionBar = layoutInflater.inflate(com.miu.housing.R.layout.general_top_header,null)
-        actionBar?.setCustomView(viewActionBar, params)
-        var tview = viewActionBar.findViewById<TextView>(com.miu.housing.R.id.loginname)
-        tview.setText("$fullname")
-        var appName = getString(com.miu.housing.R.string.app_name)
-        var aview = viewActionBar.findViewById<TextView>(com.miu.housing.R.id.apptitle)
-        aview.setText("$appName-Report Damage")
+        var rightText = "${user?.firstName} ${user?.lastName}"
+        var leftText = getString(com.miu.housing.R.string.app_name) + " - Report Damage"
+
+        val actionBar: ActionBar? = supportActionBar
+        if(actionBar != null) {
+            showCustomActionBar(actionBar, layoutInflater, leftText, rightText)
+        }
 
         val adapter = ArrayAdapter<String>(this, R.layout.simple_spinner_item, test)
         binding.actv.setAdapter(adapter)

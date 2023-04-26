@@ -45,12 +45,18 @@
     <!--Contact us-->
 
     <!--FAQ-->
-    <string name="faq_q_1">Question 1</string>
-    <string name="faq_a_1">Answer 1</string>
-    <string name="faq_q_2">Question 2</string>
-    <string name="faq_a_2">Answer 2</string>
-    <string name="faq_q_3">Question 3</string>
-    <string name="faq_a_3">Answer 3</string>
+    <string name="faq_question">Question</string>
+    <string name="faq_answer">Answer</string>
+    <string name="faq_level">Level</string>
+    <string name="faq_level_normal">Normal</string>
+    <string name="faq_level_medium">Medium</string>
+    <string name="faq_level_high">High</string>
+    <string name="faq_dialog_add_title">Add FAQ</string>
+    <string name="faq_dialog_add_message"></string>
+    <string name="faq_dialog_edit_title">Update FAQ</string>
+    <string name="dialog_pos_btn">Submit</string>
+    <string name="dialog_nev_btn">Cancel</string>
+    <string name="faq_level_title">Select FAQ level</string>
 
     <string name="damage_item_hint"><font size="10">Enter the damaged item</font></string>
 
