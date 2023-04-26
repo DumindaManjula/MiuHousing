@@ -20,6 +20,7 @@ interface UserDao {
 
     @Query("Select * from user where emailId = :emailId")
     suspend fun getUserByEmailId(emailId: String): User
-    @Query("Delete from user")
-    suspend fun deleteAll()
+
+    @Query("Delete from User")
+    suspend fun deleteAllUser()
 }

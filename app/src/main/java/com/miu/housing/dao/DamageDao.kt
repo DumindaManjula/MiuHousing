@@ -20,5 +20,5 @@ interface DamageDao {
     suspend fun addMultipleDamages(vararg damage: Damage)
 
     @Query("Delete from Damage")
-    suspend fun deleteAll()
+    suspend fun deleteAllDamage()
 }

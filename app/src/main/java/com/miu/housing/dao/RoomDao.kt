@@ -9,4 +9,7 @@ interface RoomDao {
 
     @Query("SELECT * FROM ROOM ORDER BY roomNumber DESC")
     suspend fun getAllRooms():List<Room>
+
+    @Query("Delete from Room")
+    suspend fun deleteAllRoom()
 }
