@@ -21,5 +21,4 @@ interface DamageDao {
 
     @Query("Delete from Damage")
     suspend fun deleteAllDamage()
-
 }

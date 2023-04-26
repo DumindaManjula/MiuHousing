@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -28,6 +29,7 @@ class FaqFragment(var user: User) : Fragment(){
         binding = FragmentFaqBinding.bind(view)
         binding.rcv.layoutManager = LinearLayoutManager(context)
 
+        //check logged in user is admin and show FAB button to add new FAQ
         if(user.isAdmin == 0 || user.isAdmin == null) {
             binding.fab.visibility = View.INVISIBLE
         }
