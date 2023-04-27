@@ -32,7 +32,7 @@ class FaqFragment(var user: User) : Fragment(){
         if(user.isAdmin == 0 || user.isAdmin == null) {
             binding.fab.visibility = View.INVISIBLE
         }
-        fAdapter.loginUser = user
+        //fAdapter.loginUser = user
         binding.rcv.adapter = fAdapter
         binding.fab.setOnClickListener {
             var builder = AlertDialog.Builder(view.context)
