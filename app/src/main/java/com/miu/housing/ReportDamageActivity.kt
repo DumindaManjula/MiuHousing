@@ -122,6 +122,7 @@ class ReportDamageActivity : BaseActivity() {
             }
             com.miu.housing.R.id.logout -> {
                 val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra("logout", "logout")
                 startActivity(intent)
                 //Toast.makeText(this, "Test test", Toast.LENGTH_SHORT).show()
             }

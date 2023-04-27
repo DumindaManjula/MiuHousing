@@ -17,5 +17,5 @@ interface ComplainDao {
     suspend fun addMultipleComplain(vararg complain: Complain)
 
     @Query("Delete from Complain")
-    suspend fun deleteAll()
+    suspend fun deleteAllComplain()
 }

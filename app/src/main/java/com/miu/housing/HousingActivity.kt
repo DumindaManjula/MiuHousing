@@ -92,6 +92,7 @@ class HousingActivity : AppCompatActivity() {
             }
             R.id.logout -> {
                 val intent = Intent(this, MainActivity::class.java)
+                intent.putExtra("logout", "logout")
                 startActivity(intent)
             }
         }

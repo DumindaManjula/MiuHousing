@@ -37,7 +37,11 @@ class MainActivity : BaseActivity() {
 
         prefs = getSharedPreferences("com.mycompany.myAppName", MODE_PRIVATE);
 
-        initializeSampleData();
+        var intent = intent
+        var tempLogOut = intent.getStringExtra("logout")
+        if(!tempLogOut.equals("logout")){
+            initializeSampleData();
+        }
 
         var resultContracts =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -190,6 +194,10 @@ class MainActivity : BaseActivity() {
         val faq4 = Faq("After-hours/late move-in date policies?", "nternational students arriving late may call Campus Security at 641-472-1115", 3)
         val faq5 = Faq("10 things to know before you arrive?", "Climate and clothing, what to bring and not to bring, on-campus telephone / Cable TV / Internet services, insurance, shipping belongings in advance, lodging in Fairfield, and more.", 2)
 
+        val complain1 = Complain("Washed Rooms are not cleand","duminda@miu.edu")
+        val complain2 = Complain("Students room is noisy","aven@miu.edu")
+
+
 //        if (prefs!!.getBoolean("firstrun",true)) {
             launch {
                 applicationContext?.let {
@@ -200,6 +208,7 @@ class MainActivity : BaseActivity() {
                     MiuHousingDatabase(it).getRoomDao().deleteAllRoom()
                     MiuHousingDatabase(it).getUserDao().deleteAllUser()
                     MiuHousingDatabase(it).getFaqDao().deleteAllFAQ()
+                    MiuHousingDatabase(it).getComplainDao().deleteAllComplain()
 
                     var user =
                         MiuHousingDatabase(it).getUserDao().addMultipleUsers(user1, user2, user3, user4, user5, admin)
@@ -238,6 +247,14 @@ class MainActivity : BaseActivity() {
                         Log.i(MY_MIU_TAG, "Inserted all room at installation.......")
                     } else {
                         Log.i(MY_MIU_TAG, "Failing to save room data during intialization")
+                    }
+
+                    var complain =
+                        MiuHousingDatabase(it).getComplainDao().addMultipleComplain(complain1, complain2)
+                    if (complain != null) {
+                        Log.i(MY_MIU_TAG, "Inserted all complain at installation.......")
+                    } else {
+                        Log.i(MY_MIU_TAG, "Failing to save complain data during intialization")
                     }
 
                 }
