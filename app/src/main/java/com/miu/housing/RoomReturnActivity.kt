@@ -18,7 +18,7 @@ import kotlinx.coroutines.withContext
 
 class RoomReturnActivity : BaseActivity() {
     private lateinit var binding : RoomReturnBinding
-     var room: Room? = null
+    private lateinit var room: Room
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding= RoomReturnBinding.inflate(layoutInflater)
@@ -26,31 +26,27 @@ class RoomReturnActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-//        var roomImage = binding.roomImages
-//        var buildingName = binding.buildingName
-//        var roomNumber = binding.roomNumber
-//        var roomType = binding.roomType
+        var roomImage = binding.roomImages
+        var buildingName = binding.buildingName
+        var roomNumber = binding.roomNumber
+        var roomType = binding.roomType
 
         val intent = intent
         val tmp = intent.getSerializableExtra("userInfo")
         var user = tmp as User
 
-        lifecycleScope.launch {
+        launch {
             applicationContext?.let {
-                withContext(Dispatchers.Main){
-                var bookingReturn = MiuHousingDatabase(it).getBookingDao().getBooking(user.id)
-                room = MiuHousingDatabase(it).getRoomDao().getRoom(bookingReturn.room_number)
 
-                    Log.i("MY_MIU_TAG", room.toString())
-                }
-                withContext(Dispatchers.Main){
-                    room?.let { it ->
-                        binding.roomImages.setImageResource(it.image)
-                        binding.roomNumber.text = it.Room_no.toString()
-                        binding.roomType.text = it.Room_type.toString()
-                        binding.buildingName.text= it.buildingName
-                    }
-                }
+                    val bookingReturn = MiuHousingDatabase(it).getBookingDao().getBooking(user.id)
+                    room = MiuHousingDatabase(it).getRoomDao().getRoom(bookingReturn.room_number)
+
+                       roomImage.setImageResource(room.image)
+                       roomNumber.text = room.Room_no.toString()
+                        roomType.text = room.Room_type
+                        buildingName.text= room.buildingName
+
+
             }}
 
 

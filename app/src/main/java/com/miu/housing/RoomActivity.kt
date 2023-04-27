@@ -50,7 +50,7 @@ class RoomActivity : BaseActivity() {
 
                     launch {
                         applicationContext?.let {
-                            var newBooking = Booking(building_name,room.id, user.id, true);
+                            var newBooking = Booking(building_name,room.Room_no, user.id, true);
                             var savedBooking = MiuHousingDatabase(it).getBookingDao().addBooking(newBooking)
                             if(savedBooking != null){
                                 room.status = false

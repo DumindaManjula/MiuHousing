@@ -23,5 +23,5 @@ interface RoomDao {
     suspend fun updateRoom(vararg room: Room)
 
     @Query("SELECT * FROM ROOM WHERE Room_no =:room_number")
-    suspend fun getRoom(room_number: Int?):Room
+    suspend fun getRoom(room_number: Int):Room
 }
