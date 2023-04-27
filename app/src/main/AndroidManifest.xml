@@ -18,6 +18,9 @@
             android:name=".DamageListActivity"
             android:exported="false" />
         <activity
+            android:name=".RoomReturnActivity"
+            android:exported="false" />
+        <activity
             android:name=".RoomActivity"
             android:exported="false" />
         <activity

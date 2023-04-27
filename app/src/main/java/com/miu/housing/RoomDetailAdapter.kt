@@ -1,25 +1,26 @@
 package com.miu.housing
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.miu.housing.db.Building
+import com.miu.housing.db.Room
+import com.miu.housing.db.User
 
-class RoomDetailAdapter(private val roomDetail: List<RoomDetail>, private val buildingName:String): RecyclerView.Adapter<RoomDetailViewHolder>() {
-    private var filteredRooms: List<RoomDetail> = roomDetail
+class RoomDetailAdapter(private val room: List<Room>, private val buildingName:String, private val user: User): RecyclerView.Adapter<RoomDetailViewHolder>() {
+    private var filteredRooms: List<Room> = room
 
 
-    fun filterRooms(building: BuildingDetail):List<RoomDetail> {
+    fun filterRooms(building: Building):List<Room> {
         filteredRooms = if(building == null){
-            roomDetail
+            room
         }else{
-            roomDetail.filter { it.BuildingId == building.id}
+            room.filter { it.buildingName == building.buildingName}
         }
 
         if(filteredRooms.isEmpty()){
-            filteredRooms = roomDetail
+            filteredRooms = room
         }
         notifyDataSetChanged()
         return  filteredRooms
@@ -35,11 +36,12 @@ class RoomDetailAdapter(private val roomDetail: List<RoomDetail>, private val bu
 
 
     override fun onBindViewHolder(holder: RoomDetailViewHolder, position: Int) {
-        val roomDetail = filteredRooms[position]
-        holder.bind(roomDetail)
+        val room = filteredRooms[position]
+        holder.bind(room)
         holder.itemView.setOnClickListener{
             val intent = Intent(holder.itemView.context, RoomActivity::class.java)
-            intent.putExtra("room",roomDetail)
+            intent.putExtra("userInfo", user)
+            intent.putExtra("room",room)
             intent.putExtra("BuildingName", buildingName)
             holder.itemView.context.startActivity(intent)
         }

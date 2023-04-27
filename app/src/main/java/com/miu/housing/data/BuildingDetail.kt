@@ -1,4 +1,4 @@
-package com.miu.housing
+package com.miu.housing.data
 
 import java.io.Serializable
 

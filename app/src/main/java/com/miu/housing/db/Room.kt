@@ -9,9 +9,9 @@ import java.io.Serializable
 
 
 @Entity
-data class Room(var roomNumber:String?, var roomType:String?, var price:Int? , var status:Boolean, var image: Bitmap?):
+data class Room(var buildingName:String, var Room_no:Int, var Room_type:String, var price:Int , var status:Boolean, var image: Int):
     Serializable {
     @PrimaryKey(autoGenerate = true)
     var id:Int = 0
-//    @ColumnInfo(name = "building_id") val buildingId: Int = 0
+
 }

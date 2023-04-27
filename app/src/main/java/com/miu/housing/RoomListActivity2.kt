@@ -6,11 +6,16 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miu.housing.databinding.ActivityRoomListBinding
+import com.miu.housing.db.MiuHousingDatabase
+import com.miu.housing.db.Room
+import com.miu.housing.db.User
+import kotlinx.coroutines.launch
 
 
 @Suppress("DEPRECATION")
-class RoomListActivity2 : AppCompatActivity() {
+class RoomListActivity2 : BaseActivity(){
     private lateinit var binding: ActivityRoomListBinding
+    private lateinit var room:List<Room>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRoomListBinding.inflate(layoutInflater)
@@ -19,34 +24,26 @@ class RoomListActivity2 : AppCompatActivity() {
 
         val roomRecyclerView = findViewById<RecyclerView>(R.id.check_recycler)
         roomRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        val buildingName = intent.getStringExtra("buildingName").toString()
+
+        val intent = intent
+        val tmp = intent.getSerializableExtra("userInfo")
+        var user = tmp as User
+
+        launch {
+            applicationContext?.let {
+                room = MiuHousingDatabase(it).getRoomDao().getAllRooms()
+                val filteredRooms = room.filter { it.buildingName == buildingName }
+
+                val roomAdapter = RoomDetailAdapter(filteredRooms, buildingName, user)
+                roomRecyclerView.adapter = roomAdapter
+            }
+        }
 
 
-        val buildingId = intent.getIntExtra("building_Id", -1)
-        val buildingName= intent.getStringExtra("buildingName").toString()
-        val filteredRooms = getRoomData().filter { it.BuildingId == buildingId }
 
-        val roomAdapter = RoomDetailAdapter(filteredRooms, buildingName)
-        roomRecyclerView.adapter = roomAdapter
     }
 
-    private fun getBuildingData(): List<BuildingDetail> {
-        return listOf(
-            BuildingDetail(1, "HH", 30, R.drawable.building1),
-            BuildingDetail(2, "R-13", 20, R.drawable.building2),
-            BuildingDetail(3, "Building 105", 15, R.drawable.building3),
-        )
-    }
-
-    private fun getRoomData(): List<RoomDetail> {
-        return listOf(
-            RoomDetail(1, 101, "Standard Room", "$100", R.drawable.building1),
-            RoomDetail(1, 102, "Standard Room", "$100", R.drawable.building2),
-            RoomDetail(2, 103, "Standard Room", "$100", R.drawable.building3),
-            RoomDetail(2, 201, "Deluxe Room", "$200", R.drawable.building1),
-            RoomDetail(3, 202, "Deluxe Room", "$200", R.drawable.building2),
-            RoomDetail(3, 203, "Deluxe Room", "$200", R.drawable.building3),
-        )
-    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

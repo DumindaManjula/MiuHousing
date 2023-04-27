@@ -5,10 +5,16 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat.startActivity
+import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.RecyclerView
 import com.miu.housing.data.ReservationData
 import com.miu.housing.databinding.ReservationViewBinding
+import com.miu.housing.db.MiuHousingDatabase
 import com.miu.housing.db.User
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class ReservationAdapter(var user: User, var list: ArrayList<ReservationData>): RecyclerView.Adapter<ReservationAdapter.ReservationViewHolder>(){
@@ -31,9 +37,32 @@ class ReservationAdapter(var user: User, var list: ArrayList<ReservationData>): 
             when(position) {
                 0 -> {
                     val intent = Intent(it.context, ReserveRoomActivity::class.java)
+                    intent.putExtra("userInfo", user)
                     it.context.startActivity(intent)
                 }
-                1 -> {}
+                1 -> {
+                    GlobalScope.launch {
+
+                        var reservedRoom = MiuHousingDatabase(it.context).getBookingDao().getBooking(user.id)
+                        if(reservedRoom !=null){
+                            val intent = Intent(it.context, RoomReturnActivity::class.java)
+                            intent.putExtra("userInfo", user)
+                            it.context.startActivity(intent)
+                        }}
+
+                            val builder = AlertDialog.Builder(it.context)
+                            builder.setTitle("No Reserved Room Found")
+                                .setMessage("You should reserve a room first")
+                                .setPositiveButton("Ok"){
+                                    dialog,_ ->  dialog.dismiss()
+                                }
+                                .show()
+
+
+
+
+
+                }
                 2 -> {
                     val intent = Intent(it.context, RequestingLetterActivity::class.java)
                     intent.putExtra("userInfo", user)

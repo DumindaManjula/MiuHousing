@@ -6,21 +6,34 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.miu.housing.databinding.RoomsListBinding
+import com.miu.housing.db.MiuHousingDatabase
+import com.miu.housing.db.Room
+import kotlinx.coroutines.launch
 
 @Suppress("DEPRECATION")
-class RoomListActivity : AppCompatActivity() {
+class RoomListActivity : BaseActivity() {
     private lateinit var binding: RoomsListBinding
+    private lateinit var room:List<Room>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = RoomsListBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val recyclerView = findViewById<RecyclerView>(R.id.rooms_list_recycler)
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        val adapter = RoomDetailAdapter(getRoomData(),"HH")
-        recyclerView.adapter = adapter
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        val recyclerView = findViewById<RecyclerView>(R.id.rooms_list_recycler)
+//        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+//        launch {
+//            applicationContext?.let {
+//                room = MiuHousingDatabase(it).getRoomDao().getAllRooms()
+//               // val filteredRooms = room.filter { it.buildingName == buildingName }
+//                val adapter = RoomDetailAdapter(room,"HH", )
+//                recyclerView.adapter = adapter
+//            }
+//        }
+
+
 
 
 
@@ -37,22 +50,4 @@ class RoomListActivity : AppCompatActivity() {
         }
     }
 
-    private fun getBuildingData(): List<BuildingDetail> {
-        return listOf(
-            BuildingDetail(1, "HH", 30, R.drawable.building1),
-            BuildingDetail(2, "R-13", 20, R.drawable.building2),
-            BuildingDetail(3, "Building 105", 15, R.drawable.building3),
-        )
-    }
-
-    private fun getRoomData(): List<RoomDetail> {
-        return listOf(
-            RoomDetail(1, 101, "Standard Room", "$100", R.drawable.building1),
-            RoomDetail(1, 102, "Standard Room", "$100", R.drawable.building2),
-            RoomDetail(2, 103, "Standard Room", "$100", R.drawable.building3),
-            RoomDetail(2, 201, "Deluxe Room", "$200", R.drawable.building1),
-            RoomDetail(3, 202, "Deluxe Room", "$200", R.drawable.building2),
-            RoomDetail(3, 203, "Deluxe Room", "$200", R.drawable.building3),
-        )
-    }
 }

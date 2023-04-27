@@ -13,6 +13,7 @@ import com.miu.housing.db.Damage
 import com.miu.housing.db.Faq
 import com.miu.housing.db.MiuHousingDatabase
 import com.miu.housing.db.User
+import com.miu.housing.db.*
 import kotlinx.coroutines.launch
 
 
@@ -156,6 +157,29 @@ class MainActivity : BaseActivity() {
         val user5 = User("Yen", "Truong", "truthblue82@gmail.com", "1111", "A", "613479",1)
         val admin = User("Admin", "Admin", "housing@miu.edu", "1111", "A", "613479",1)
 
+        var building1 = Building("Neptune",2, R.drawable.building1)
+        var building2 = Building("Pluto",3, R.drawable.building2)
+        var building3 = Building("Earth",3, R.drawable.building3)
+        var building4 = Building("Mars",5, R.drawable.building3)
+
+
+        var room1 = Room("Neptune",100,"Shared",300,true,R.drawable.building1)
+        var room2 = Room("Neptune",101,"Single",500,true,R.drawable.building2)
+        var room3 = Room("Neptune",102,"Shared",400,true,R.drawable.building1)
+
+        var room4 = Room("Pluto",100,"Shared",200,true,R.drawable.building1)
+        var room5 = Room("Pluto",101,"Single",500,true,R.drawable.building2)
+        var room6 = Room("Pluto",104,"Shared",600,true,R.drawable.building1)
+
+        var room7 = Room("Earth",110,"Shared",200,true,R.drawable.building1)
+        var room8 = Room("Earth",111,"Single",300,true,R.drawable.building1)
+        var room9 = Room("Earth",112,"Single",400,true,R.drawable.building1)
+
+        var room10 = Room("Mars",120,"Single",500,true,R.drawable.building1)
+        var room11 = Room("Mars",121,"Shared",800,true,R.drawable.building1)
+        var room12 = Room("Mars",122,"Single",600,true,R.drawable.building1)
+
+
         //Damage Items data
         val damageItem1 = Damage("Table", "Too old", "Not usable", "john@gmail.com")
         val damageItem2 = Damage("Chair", "Not Strong one", "Not usable", "andrew@gmail.com")
@@ -199,6 +223,23 @@ class MainActivity : BaseActivity() {
                     } else {
                         Log.i(MY_MIU_TAG, "Failing to save faq item during installation")
                     }
+
+                    var building =
+                        MiuHousingDatabase(it).getBuildingDao().addMultipleBuilding(building1, building2, building3, building4)
+                    if (building != null) {
+                        Log.i(MY_MIU_TAG, "Inserted all building at installation.......")
+                    } else {
+                        Log.i(MY_MIU_TAG, "Failing to save building data during intialization")
+                    }
+
+                    var room =
+                        MiuHousingDatabase(it).getRoomDao().addMultipleRoom(room1, room2, room3, room4, room5, room6, room7, room8, room9,room10, room11, room12 )
+                    if (room != null) {
+                        Log.i(MY_MIU_TAG, "Inserted all room at installation.......")
+                    } else {
+                        Log.i(MY_MIU_TAG, "Failing to save room data during intialization")
+                    }
+
                 }
             }
 //        }
